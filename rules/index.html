@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rules | Refined Vanilla</title>
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+
+    <link rel="stylesheet" href="../css/rules.css">
+</head>
+
+<body>
+    <header role="banner">
+        <div class="container nav-container">
+            <a href="../index.html" class="brand">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                    <rect width="28" height="28" rx="4" fill="#157A6E" />
+                    <path d="M7 7H21V21H7V7Z" fill="#1C1D21" />
+                </svg>
+                <span>Refined Vanilla</span>
+            </a>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <button class="nav-toggle" id="nav-toggle" aria-expanded="false">
+                    <svg width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="12" x2="21" y2="12" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <line x1="3" y1="18" x2="21" y2="18" />
+                    </svg>
+                </button>
+                <nav>
+                    <ul class="nav-menu" id="nav-menu">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../index.html#about">About</a></li>
+                        <li><a href="#">Wiki</a></li>
+                        <li><a href="../blogs/index.html">Blogs</a></li>
+                        <li><a href="../index.html#support">Support</a></li>
+                        <li><a href="./index.html" aria-current="page">Rules</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="rules-list-section">
+            <div class="section-header reveal">
+                <h2>Server Rules</h2>
+            </div>
+            <p style="text-align: center; margin-bottom: 4rem; color: var(--text-dim); max-width: 600px; margin-left: auto; margin-right: auto;"
+                class="reveal">
+                Refined Vanilla is an Anarchy server, but we enforce specific rules to ensure the technical stability of
+                the platform and the safety of our community.
+            </p>
+
+            <ul class="rules-list reveal">
+                <li>
+                    <strong>No Hacking or Exploiting</strong>
+                    <span>
+                        Using hacked clients, cheats, or exploits to gain an unfair advantage is strictly forbidden.
+                        Quality-of-life mods like OptiFine or minimaps are allowed. Auto-clickers are allowed for farm
+                        usage.
+                    </span>
+                </li>
+
+                <li>
+                    <strong>No Duplication / Bug Abuse</strong>
+                    <span>
+                        TNT, rail, and carpet duplication are allowed.
+                        Any other duplication or bug abuse is likely patched and not permitted.
+                    </span>
+                </li>
+
+                <li>
+                    <strong>No Doxxing</strong>
+                    <span>
+                        Sharing private or personal information of any player will result in a permanent ban with no
+                        appeal.
+                    </span>
+                </li>
+
+                <li>
+                    <strong>No Spamming or Advertising</strong>
+                    <span>
+                        Spam, excessive advertising, or flooding chat is not allowed.
+                        You know the drill — keep it reasonable.
+                    </span>
+                </li>
+
+                <li>
+                    <strong>No Lag Machines</strong>
+                    <span>
+                        Any behavior intended to intentionally degrade server performance or stability is prohibited.
+                    </span>
+                </li>
+
+                <li>
+                    <strong>Follow Staff Instructions</strong>
+                    <span>
+                        Listen to staff and abide by their decisions, but feel free to bitch at them all you want.
+                        If you need assistance, open a ticket in the <em>report-a-bug</em> channel on our Discord.
+                    </span>
+                </li>
+
+                <div class="rules-footer-note">
+                    By playing on Refined Vanilla you agree to follow these rules. Have fun and enjoy your time!
+                </div>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Refined Vanilla. Not affiliated with Mojang.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

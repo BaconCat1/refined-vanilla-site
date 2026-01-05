@@ -1,0 +1,54 @@
+/* FILE: /css/base.css */
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-main);
+  /* "Alive" Grid Background Pattern */
+  background-image:
+    linear-gradient(var(--border-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-color) 1px, transparent 1px),
+    radial-gradient(circle at 50% 0%, var(--bg-darker) 0%, var(--bg-main) 70%);
+  background-size: 50px 50px, 50px 50px, 100% 100%;
+  background-attachment: fixed;
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-bright);
+  font-weight: 800;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+    margin-bottom: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+
+a:hover {
+  color: var(--text-bright);
+  text-shadow: 0 0 10px var(--accent-glow);
+}

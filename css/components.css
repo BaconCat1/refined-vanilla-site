@@ -1,0 +1,88 @@
+/* FILE: /css/components.css */
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-primary);
+  color: #fff !important;
+  padding: 0.9rem 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 15px rgba(21, 122, 110, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px var(--accent-glow);
+  background: var(--accent-hover);
+}
+
+.btn-pulse {
+  animation: pulse 2s infinite;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--accent-primary);
+  color: var(--text-main);
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.btn-outline:hover {
+  background: var(--accent-primary);
+  color: #fff;
+}
+
+/* Cards (Glassmorphism) */
+.glass-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 4px;
+  padding: 2rem;
+  transition: all 0.4s ease;
+  box-shadow: var(--card-shadow);
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-primary);
+}
+
+/* Vote Buttons Grid */
+.vote-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btn-vote {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  transition: all 0.2s;
+  display: block;
+}
+
+.btn-vote:hover {
+  background: var(--accent-primary);
+  color: #fff;
+  border-color: var(--accent-primary);
+}

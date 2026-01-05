@@ -1,0 +1,33 @@
+/* FILE: /css/variables.css */
+
+:root {
+  /* --- DARK THEME (Default) --- */
+  --bg-main: #1C1D21;
+  --bg-darker: #131416;
+  --bg-card: rgba(28, 29, 33, 0.75); /* Glass effect */
+  --accent-primary: #157A6E; /* Teal/Green Brand Color */
+  --accent-glow: rgba(21, 122, 110, 0.6);
+  --accent-hover: #129685;
+  --text-main: #B9D0DC;
+  --text-bright: #B9D0DC;
+  --text-dim: #6d7d85;
+  --border-color: rgba(185, 208, 220, 0.1);
+  --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  --hero-overlay: radial-gradient(circle, transparent 20%, #1C1D21 90%);
+}
+
+/* --- LIGHT THEME ("Quartz/Stone" Palette) --- */
+body.light-theme {
+  --bg-main: #E9EFF2; /* Light stone blue-grey */
+  --bg-darker: #D1DBE1;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --accent-primary: #157A6E; /* Brand color remains consistent */
+  --accent-glow: rgba(21, 122, 110, 0.25);
+  --accent-hover: #0f5c52;
+  --text-main: #2D3A41; /* Dark grey for readability */
+  --text-bright: #131416;
+  --text-dim: #5c6d77;
+  --border-color: rgba(21, 122, 110, 0.15);
+  --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+  --hero-overlay: radial-gradient(circle, transparent 20%, #E9EFF2 90%);
+}

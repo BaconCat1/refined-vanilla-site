@@ -1,0 +1,43 @@
+/* Animation Keyframes */
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(21, 122, 110, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(21, 122, 110, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(21, 122, 110, 0); }
+}
+
+/* Cinematic Background Movement */
+@keyframes ken-burns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+
+/* Stable fade for Masked Title (Opacity Only) */
+@keyframes fade-in-stable {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Upward Motion for Subtitles/Buttons */
+@keyframes fade-up {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Text Shimmer Fallback */
+@keyframes text-shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* Scroll Reveal Class */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}

@@ -1,0 +1,162 @@
+/* =========================================================
+   RULES SECTION LAYOUT
+   File: /css/rules.css (High-visibility variant)
+   ========================================================= */
+
+.rules-list-section {
+  /* Top padding to clear a fixed navbar and keep the section title/content visible */
+  padding: 10rem 0 5rem;
+}
+
+.rules-list {
+  list-style: none;
+
+  /* Initialize a CSS counter for auto-numbering the rules (01, 02, ...) */
+  counter-reset: rule-counter;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* Tablet/Desktop: switch to two columns for better density and scanning */
+@media (min-width: 768px) {
+  .rules-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =========================================================
+   RULE CARD STYLES
+   ========================================================= */
+
+.rules-list li {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+
+  padding: 2.5rem 2rem;
+  border-radius: 6px;
+
+  /* Smooth lift/glow hover animation */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  /* Ensures the large decorative number stays clipped within the card */
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hover: lift the card and emphasize with accent border + subtle glow */
+.rules-list li:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-primary);
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6),
+              0 0 15px rgba(21, 122, 110, 0.2);
+}
+
+/* =========================================================
+   DECORATIVE AUTO-NUMBER (01, 02, ...)
+   ========================================================= */
+
+.rules-list li::before {
+  counter-increment: rule-counter;
+  content: counter(rule-counter, decimal-leading-zero);
+
+  position: absolute;
+  top: -10px;
+  right: -5px;
+
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 900;
+  font-size: 6rem;
+  color: var(--accent-primary);
+
+  /* Very low opacity so it reads as decoration, not content */
+  opacity: 0.05;
+
+  line-height: 1;
+  z-index: 0;
+
+  /* Decorative only: must not block user interaction */
+  pointer-events: none;
+
+  transition: all 0.3s ease;
+}
+
+.rules-list li:hover::before {
+  opacity: 0.12;
+  transform: scale(1.1) rotate(-5deg);
+}
+
+/* =========================================================
+   CONTENT HIERARCHY
+   ========================================================= */
+
+.rules-list li strong {
+  display: block;
+
+  /* Rule title: larger and high-contrast for quick scanning */
+  font-size: 1.5rem;
+  color: #B9D0DC;
+
+  margin-bottom: 0.8rem;
+
+  /* Keep text above the decorative number */
+  position: relative;
+  z-index: 1;
+
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+/* Small accent underline to visually separate title from body */
+.rules-list li strong::after {
+  content: '';
+  display: block;
+  width: 35px;
+  height: 3px;
+  background: var(--accent-primary);
+  margin-top: 0.5rem;
+  border-radius: 2px;
+}
+
+.rules-list li span,
+.rules-list li p {
+  /* Body text: slightly larger for readability */
+  font-size: 1.15rem;
+  color: #e4e0ed;
+  line-height: 1.8;
+  font-weight: 400;
+
+  /* Ensure content renders above the decorative number */
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================================
+   IMPORTANT NOTE BOX
+   ========================================================= */
+
+.rules-footer-note {
+  /* Span full width across the grid (works for 1 or 2 columns) */
+  grid-column: 1 / -1;
+
+  background: rgba(21, 122, 110, 0.1);
+  border: 1px solid var(--accent-primary);
+
+  padding: 2rem;
+  margin-top: 3rem;
+
+  text-align: center;
+  border-radius: 4px;
+
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
