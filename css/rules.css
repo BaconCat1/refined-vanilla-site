@@ -1,162 +1,215 @@
-/* =========================================================
-   RULES SECTION LAYOUT
-   File: /css/rules.css (High-visibility variant)
-   ========================================================= */
+/* /css/rules.css
+ * Rules page styling
+ * Premium card layout with numbering and motion
+ */
 
+/* Section spacing */
 .rules-list-section {
-  /* Top padding to clear a fixed navbar and keep the section title/content visible */
-  padding: 10rem 0 5rem;
+  padding-bottom: var(--space-8);
 }
 
+/* Intro text */
+.rules-intro {
+  text-align: center;
+  color: var(--text-dim);
+  max-width: 65ch;
+  margin-inline: auto;
+  margin-bottom: var(--space-8);
+  font-size: var(--text-md);
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+}
+
+/* Rules list with CSS counter */
 .rules-list {
   list-style: none;
-
-  /* Initialize a CSS counter for auto-numbering the rules (01, 02, ...) */
-  counter-reset: rule-counter;
+  padding: 0;
+  margin: 0;
 
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: var(--space-5);
+  max-width: 850px;
+  margin-inline: auto;
 
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0;
+  counter-reset: rules-counter;
 }
 
-/* Tablet/Desktop: switch to two columns for better density and scanning */
-@media (min-width: 768px) {
-  .rules-list {
-    grid-template-columns: repeat(2, 1fr);
+/* Rule card */
+.rules-list li {
+  position: relative;
+  counter-increment: rules-counter;
+
+  background: rgba(185, 208, 220, 0.02);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+
+  /* Entrance animation */
+  opacity: 0;
+  transform: translateY(30px) scale(0.98);
+  filter: blur(10px);
+  animation: cinematicEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  transition:
+    transform 0.5s cubic-bezier(0.2, 0, 0.2, 1),
+    background-color 0.5s ease,
+    border-color 0.5s ease,
+    box-shadow 0.5s ease;
+
+  will-change: transform, opacity, filter;
+}
+
+/* Entry animation */
+@keyframes cinematicEntrance {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
   }
 }
 
-/* =========================================================
-   RULE CARD STYLES
-   ========================================================= */
-
-.rules-list li {
-  position: relative;
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-
-  padding: 2.5rem 2rem;
-  border-radius: 6px;
-
-  /* Smooth lift/glow hover animation */
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
-  /* Ensures the large decorative number stays clipped within the card */
-  overflow: hidden;
-
-  display: flex;
-  flex-direction: column;
+/* Stagger first items */
+.rules-list li:nth-child(1) {
+  animation-delay: 0.1s;
 }
 
-/* Hover: lift the card and emphasize with accent border + subtle glow */
-.rules-list li:hover {
-  transform: translateY(-8px);
-  border-color: var(--accent-primary);
-  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6),
-              0 0 15px rgba(21, 122, 110, 0.2);
+.rules-list li:nth-child(2) {
+  animation-delay: 0.2s;
 }
 
-/* =========================================================
-   DECORATIVE AUTO-NUMBER (01, 02, ...)
-   ========================================================= */
+.rules-list li:nth-child(3) {
+  animation-delay: 0.3s;
+}
 
+.rules-list li:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.rules-list li:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.rules-list li:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+/* Numbering */
 .rules-list li::before {
-  counter-increment: rule-counter;
-  content: counter(rule-counter, decimal-leading-zero);
-
+  content: counter(rules-counter, decimal-leading-zero);
   position: absolute;
-  top: -10px;
-  right: -5px;
+  top: 1.5rem;
+  right: 2rem;
 
-  font-family: 'Segoe UI', sans-serif;
+  font-family: var(--font-mono);
+  font-size: 3rem;
   font-weight: 900;
-  font-size: 6rem;
-  color: var(--accent-primary);
-
-  /* Very low opacity so it reads as decoration, not content */
-  opacity: 0.05;
-
   line-height: 1;
-  z-index: 0;
 
-  /* Decorative only: must not block user interaction */
-  pointer-events: none;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(185, 208, 220, 0.1);
 
-  transition: all 0.3s ease;
+  z-index: -1;
+  transition: -webkit-text-stroke 0.4s ease, transform 0.4s ease;
+}
+
+/* Hover lift */
+.rules-list li:hover {
+  background: rgba(185, 208, 220, 0.05);
+  border-color: rgba(21, 122, 110, 0.4);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow:
+    0 25px 50px -12px rgba(0, 0, 0, 0.6),
+    0 0 20px -5px var(--accent-glow);
 }
 
 .rules-list li:hover::before {
-  opacity: 0.12;
-  transform: scale(1.1) rotate(-5deg);
+  -webkit-text-stroke: 1px var(--accent-primary);
+  transform: translateY(-5px);
+  opacity: 0.5;
 }
 
-/* =========================================================
-   CONTENT HIERARCHY
-   ========================================================= */
-
-.rules-list li strong {
+/* Rule title */
+.rules-list strong {
   display: block;
-
-  /* Rule title: larger and high-contrast for quick scanning */
-  font-size: 1.5rem;
-  color: #B9D0DC;
-
-  margin-bottom: 0.8rem;
-
-  /* Keep text above the decorative number */
-  position: relative;
-  z-index: 1;
-
+  color: var(--text-bright);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
 }
 
-/* Small accent underline to visually separate title from body */
-.rules-list li strong::after {
-  content: '';
+/* Accent underline */
+.rules-list strong::after {
+  content: "";
   display: block;
-  width: 35px;
-  height: 3px;
+  width: 40px;
+  height: 2px;
   background: var(--accent-primary);
   margin-top: 0.5rem;
-  border-radius: 2px;
+  box-shadow: 0 0 10px var(--accent-glow);
+  transition: width 0.4s ease;
 }
 
-.rules-list li span,
-.rules-list li p {
-  /* Body text: slightly larger for readability */
-  font-size: 1.15rem;
-  color: #e4e0ed;
+.rules-list li:hover strong::after {
+  width: 80px;
+}
+
+/* Rule body */
+.rules-list span {
+  display: block;
+  color: #f5f5f5;
   line-height: 1.8;
-  font-weight: 400;
-
-  /* Ensure content renders above the decorative number */
-  position: relative;
-  z-index: 1;
+  font-size: var(--text-md);
+  opacity: 0.85;
 }
 
-/* =========================================================
-   IMPORTANT NOTE BOX
-   ========================================================= */
-
-.rules-footer-note {
-  /* Span full width across the grid (works for 1 or 2 columns) */
-  grid-column: 1 / -1;
-
-  background: rgba(21, 122, 110, 0.1);
-  border: 1px solid var(--accent-primary);
-
-  padding: 2rem;
-  margin-top: 3rem;
-
-  text-align: center;
-  border-radius: 4px;
-
-  color: #ffffff;
-  font-size: 1.2rem;
+/* Highlighted terms */
+.rules-list em {
+  color: var(--accent-primary);
+  font-style: normal;
   font-weight: 600;
+}
+
+/* Footer note */
+.rules-footer-note {
+  margin-top: var(--space-8);
+  text-align: center;
+  color: var(--text-dim);
+  font-size: var(--text-sm);
+  max-width: 60ch;
+  margin-inline: auto;
+  opacity: 0.6;
+}
+
+/* Mobile tweaks */
+@media (max-width: 768px) {
+  .rules-list-section {
+    padding-inline: var(--space-4);
+    margin-top: calc(var(--header-height) + 1.5rem);
+  }
+
+  .rules-list li {
+    padding: 2rem;
+  }
+
+  .rules-list li::before {
+    font-size: 2.2rem;
+    top: 1rem;
+    right: 1rem;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .rules-list li {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
 }

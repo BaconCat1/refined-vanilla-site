@@ -1,88 +1,547 @@
-/* FILE: /css/components.css */
+/* /css/components.css
+ *
+ * Reusable UI System: Refined Vanilla.
+ * Handles typography headers, interactive surfaces, and utility layouts.
+ */
 
-/* Buttons */
+/* ==========================================================================
+   1. SECTION HEADERS
+   ========================================================================== */
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  /* Fix: Guaranteed vertical breathing room */
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-header h1,
+.section-header h2 {
+  margin: 0;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+}
+
+.section-subtitle {
+  margin: 0;
+  color: var(--text-dim);
+  max-width: 65ch;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   2. BUTTON SYSTEM
+   ========================================================================== */
+
+/* Base Button */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  padding: 0.9rem 1.8rem;
+  border-radius: var(--radius-md);
   background: var(--accent-primary);
-  color: #fff !important;
-  padding: 0.9rem 2rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border: 1px solid transparent;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  box-shadow: 0 4px 15px rgba(21, 122, 110, 0.3);
-  position: relative;
-  overflow: hidden;
+  transition:
+    transform 0.2s cubic-bezier(0.2, 0, 0.2, 1),
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px var(--accent-glow);
   background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -10px var(--accent-glow);
 }
 
-.btn-pulse {
-  animation: pulse 2s infinite;
+.btn:active {
+  transform: translateY(0);
 }
 
-.btn-outline {
+/* Modifier: Outline */
+.btn--outline {
   background: transparent;
-  border: 1px solid var(--accent-primary);
-  color: var(--text-main);
+  color: var(--text-bright);
+  border-color: var(--border-color);
+}
+
+.btn--outline:hover {
+  background: rgba(185, 208, 220, 0.05);
+  border-color: rgba(185, 208, 220, 0.2);
+}
+
+/* Modifier: Small */
+.btn--sm {
   padding: 0.6rem 1.2rem;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  font-weight: 600;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
 }
 
-.btn-outline:hover {
-  background: var(--accent-primary);
-  color: #fff;
+/* Modifier: Premium (Shimmer Effect) */
+.btn--premium {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
 }
 
-/* Cards (Glassmorphism) */
-.glass-card {
+.btn--premium .shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.15),
+      transparent);
+  transform: skewX(-20deg);
+  animation: shimmerLoop 4s infinite linear;
+  pointer-events: none;
+}
+
+@keyframes shimmerLoop {
+  0% {
+    left: -100%;
+  }
+
+  20% {
+    left: 200%;
+  }
+
+  100% {
+    left: 200%;
+  }
+}
+
+/* Modifier: Pulse Emphasis */
+.btn--pulse {
+  animation: btnPulse 2.2s infinite ease-in-out;
+}
+
+@keyframes btnPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(21, 122, 110, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 12px rgba(21, 122, 110, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(21, 122, 110, 0);
+  }
+}
+
+/* ==========================================================================
+   3. INTERACTIVE SURFACES (CARDS)
+   ========================================================================== */
+
+/* Base Card Logic (Shared by Glass & Support) */
+.card {
+  position: relative;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  overflow: hidden;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-radius: 4px;
-  padding: 2rem;
-  transition: all 0.4s ease;
   box-shadow: var(--card-shadow);
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
 }
 
-.glass-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--accent-primary);
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(21, 122, 110, 0.3);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6), 0 0 20px -5px var(--accent-glow);
 }
 
-/* Vote Buttons Grid */
-.vote-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-top: 2rem;
+/* Modifier: Premium Border */
+.card--premium {
+  border-color: rgba(21, 122, 110, 0.2);
+}
+
+/* Decorative Card Accents */
+.card-glow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle at top right, var(--accent-glow), transparent 70%);
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.card-icon {
+  color: var(--accent-primary);
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 0 8px var(--accent-glow));
+}
+
+/* ==========================================================================
+   ABOUT US: CORRECTED SIDE-BY-SIDE LAYOUT
+   ========================================================================== */
+
+.about-section {
+    padding-block: var(--space-8);
+}
+
+/* 1. THE GRID: 1.2fr Left / 0.8fr Right */
+.about-grid {
+    display: grid;
+    gap: 4rem;
+    grid-template-columns: 1fr; /* Stacked on mobile */
+    align-items: center;
+    margin-top: 2rem;
+}
+
+@media (min-width: 900px) {
+    .about-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+        text-align: left;
+    }
+}
+
+/* 2. SUB-HEADER: "Pure Vanilla" Style */
+.about-sub-header {
+    font-size: var(--text-lg);
+    color: var(--accent-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 2rem; /* Added spacing from the paragraph */
+    position: relative;
+    display: inline-block;
+}
+
+/* Optional: Small accent line for extra "Fancy" feel */
+.about-sub-header::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: var(--accent-primary);
+    box-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* 3. TEXT WRAPPER: Breathing room */
+.about-text-wrapper p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    color: var(--text-main);
+    max-width: 60ch;
+}
+
+.lead-text {
+    font-size: 1.15rem;
+    color: var(--text-bright);
+}
+
+/* 4. VISUALS: Atmospheric Glow & Floating */
+.about-visual-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.about-glow-aura {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 75%);
+    opacity: 0.15;
+    filter: blur(40px);
+    z-index: 0;
+}
+
+.floating-logo {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
+    animation: aboutLogoFloat 7s ease-in-out infinite; /* Cinematic motion */
+}
+
+@keyframes aboutLogoFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(1.5deg); }
+}
+
+/* Mobile Alignment Fix */
+@media (max-width: 900px) {
+    .about-sub-header {
+        text-align: center;
+        width: 100%;
+    }
+    .about-sub-header::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .about-text-wrapper {
+        text-align: center;
+    }
+    .about-text-wrapper p {
+        margin-inline: auto;
+    }
+}
+
+/* ==========================================================================
+   SUPPORT & VOTE: HORIZONTAL CINEMATIC LAYOUT
+   ========================================================================== */
+
+.support-section {
+    padding-block: var(--space-8);
+    position: relative;
+    background: radial-gradient(circle at 50% 100%, rgba(21, 122, 110, 0.08), transparent 60%);
+}
+
+/* 1. HEADER: Guaranteed Vertical Breathing Room */
+.section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem; 
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.section-header h2 {
+    margin: 0;
+    font-size: var(--text-xl);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+/* 2. THE GRID: Side-by-Side Logic */
+.support-grid {
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: 1fr; 
+    max-width: var(--container-max-width);
+    margin-inline: auto;
+}
+
+@media (min-width: 860px) {
+    .support-grid {
+        grid-template-columns: 1.1fr 0.9fr; 
+        align-items: stretch; 
+    }
+}
+
+/* 3. PREMIUM CARD: Animated "Border Beam" */
+.support-card--premium {
+    position: relative;
+    z-index: 1;
+    background: rgba(19, 20, 22, 0.5) !important;
+    animation: cardFloat 6s ease-in-out infinite; 
+}
+
+.support-card--premium::before {
+    content: "";
+    position: absolute;
+    inset: -1.5px;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: conic-gradient(
+        from var(--beam-angle),
+        transparent 70%,
+        var(--accent-primary) 85%,
+        var(--accent-glow) 95%,
+        transparent
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: beamRotate 4s linear infinite;
+    pointer-events: none;
+}
+
+@property --beam-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes beamRotate {
+    to { --beam-angle: 360deg; }
+}
+
+@keyframes cardFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+/* 4. BASE CARD: Refined Spacing & Bottom-Aligned Button */
+.support-card {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: 3.5rem;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.support-card h3 {
+    margin-bottom: 1.25rem;
+    color: var(--text-bright);
+}
+
+.support-card p {
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+/* Hardware List Styling */
+.support-features {
+    margin-bottom: 3rem; 
+    list-style: none; /* Ensure no default bullets */
+}
+
+.support-features li {
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-main);
+}
+
+/* Visual List Marker */
+.support-features li::before {
+    content: "→";
+    color: var(--accent-primary);
+    font-weight: bold;
+}
+
+/* "Buy Us a Coffee" Button at Bottom */
+.btn-premium {
+    margin-top: auto; /* Pushes the button to the absolute bottom of the flex card */
+    align-self: flex-start;
+}
+
+.support-card:hover {
+    transform: translateY(-5px) scale(1.01);
+    border-color: rgba(21, 122, 110, 0.4);
+    box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.8), 0 0 30px -10px var(--accent-glow);
+}
+
+/* 5. VOTE GRID: Alignment Sync */
+.vote-grid-2x2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 1.25rem;
+    margin-top: auto; 
 }
 
 .btn-vote {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-color);
-  color: var(--text-main);
-  padding: 1rem;
-  text-align: center;
-  font-weight: 600;
-  transition: all 0.2s;
-  display: block;
+    position: relative;
+    padding: 1.25rem;
+    background: rgba(185, 208, 220, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    z-index: 1;
+    overflow: hidden;
 }
 
-.btn-vote:hover {
-  background: var(--accent-primary);
-  color: #fff;
-  border-color: var(--accent-primary);
+.btn-vote::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, var(--accent-glow), transparent);
+    opacity: 0;
+    transform: scale(0);
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    z-index: -1;
+}
+
+.btn-vote:hover::after {
+    opacity: 0.15;
+    transform: scale(2.5);
+}
+
+@media (max-width: 860px) {
+    .support-card { padding: 2.5rem; }
+    .support-card--premium { animation: none; }
+    .vote-grid-2x2 { gap: 0.75rem; }
+}
+
+/* ==========================================================================
+   5. UTILITIES
+   ========================================================================== */
+
+.text-dim {
+  color: var(--text-dim);
+}
+
+.text-bright {
+  color: var(--text-bright);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mx-auto {
+  margin-inline: auto;
+}
+
+.list-reset {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.is-active {
+  color: var(--accent-primary);
+}
+
+/* Standard Margins */
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.mt-8 {
+  margin-top: 2rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
+/* Responsive Grid for mobile */
+@media (max-width: 600px) {
+  .card {
+    padding: 2rem;
+  }
+
+  .vote-grid-2x2 {
+    grid-template-columns: 1fr;
+  }
 }

@@ -1,146 +1,165 @@
 /**
- * Main JS
- * Handles Theme Toggle, Navigation, Scroll Effects, Carousel, Lightbox, and Hero Fade
+ * js/main.js
+ * 
+ * Main JS for Refined Vanilla site,
+ * Handles navigation, header behavior, scroll reveal, gallery carousel, lightbox, and hero visual effects.
  */
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
+    // Mobile navigation
+    const navToggleEl = document.getElementById("nav-toggle");
+    const navMenuEl = document.getElementById("nav-menu");
 
-    // --- 1. Theme Persistence ---
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-    const STORAGE_KEY = 'refined_vanilla_theme';
+    if (navToggleEl && navMenuEl) {
+        const navLinks = navMenuEl.querySelectorAll("a");
 
-    const savedTheme = localStorage.getItem(STORAGE_KEY);
-    if (savedTheme === 'light') {
-        body.classList.add('light-theme');
-    }
-
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('light-theme');
-            if (body.classList.contains('light-theme')) {
-                localStorage.setItem(STORAGE_KEY, 'light');
-            } else {
-                localStorage.setItem(STORAGE_KEY, 'dark');
-            }
-        });
-    }
-
-    // --- 2. Mobile Navigation ---
-    const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    const navLinks = navMenu ? navMenu.querySelectorAll('a') : [];
-
-    if (navToggle && navMenu) {
-        navToggle.addEventListener('click', () => {
-            const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
-            navToggle.setAttribute('aria-expanded', !isExpanded);
-            navMenu.classList.toggle('active');
+        navToggleEl.addEventListener("click", () => {
+            const isExpanded = navToggleEl.getAttribute("aria-expanded") === "true";
+            navToggleEl.setAttribute("aria-expanded", String(!isExpanded));
+            navMenuEl.classList.toggle("active");
         });
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                navToggle.setAttribute('aria-expanded', 'false');
+        navLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                navMenuEl.classList.remove("active");
+                navToggleEl.setAttribute("aria-expanded", "false");
             });
         });
     }
 
-    // --- 3. Scroll Header Effect ---
-    const header = document.querySelector('header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
-
-    // --- 4. Scroll Reveal Animations ---
-    const revealElements = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.15 });
-
-    revealElements.forEach(el => revealObserver.observe(el));
-
-    // --- 5. Gallery Carousel Logic ---
-    const track = document.getElementById('carouselTrack');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-
-    if (track && prevBtn && nextBtn) {
-        const scrollAmount = 350;
-
-        nextBtn.addEventListener('click', () => {
-            track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        });
-
-        prevBtn.addEventListener('click', () => {
-            track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-        });
-    }
-
-    // --- 6. Lightbox (Pop-up) Logic ---
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const galleryImages = document.querySelectorAll('.gallery-item img');
-    const closeBtn = document.querySelector('.lightbox-close');
-
-    if (lightbox && lightboxImg) {
-        galleryImages.forEach(img => {
-            img.addEventListener('click', () => {
-                lightboxImg.src = img.src;
-                lightboxImg.alt = img.alt;
-                lightbox.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-        });
-
-        const closeLightbox = () => {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = 'auto';
+    // Header scrolled state
+    const headerEl = document.querySelector("header");
+    if (headerEl) {
+        const onScrollHeader = () => {
+            headerEl.classList.toggle("scrolled", window.scrollY > 50);
         };
 
-        if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) closeLightbox();
+        onScrollHeader();
+        window.addEventListener("scroll", onScrollHeader, { passive: true });
+    }
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll(".reveal");
+    if (revealEls.length > 0 && "IntersectionObserver" in window) {
+        const revealObserver = new IntersectionObserver(
+            (entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.15 }
+        );
+
+        revealEls.forEach((el) => revealObserver.observe(el));
+    }
+
+    // Gallery carousel
+    const carouselTrackEl = document.getElementById("carouselTrack");
+    const prevBtnEl = document.getElementById("prevBtn");
+    const nextBtnEl = document.getElementById("nextBtn");
+
+    if (carouselTrackEl && prevBtnEl && nextBtnEl) {
+        const getScrollAmount = () => {
+            const firstItem = carouselTrackEl.querySelector(".gallery-item");
+            if (!firstItem) return 350;
+            const styles = window.getComputedStyle(carouselTrackEl);
+            const gap = parseFloat(styles.columnGap || styles.gap || "0") || 0;
+            return firstItem.getBoundingClientRect().width + gap;
+        };
+
+        nextBtnEl.addEventListener("click", () => {
+            carouselTrackEl.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
         });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+
+        prevBtnEl.addEventListener("click", () => {
+            carouselTrackEl.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
+        });
+    }
+
+    // Lightbox
+    const lightboxEl = document.getElementById("lightbox");
+    const lightboxImgEl = document.getElementById("lightboxImg");
+    const galleryImgEls = document.querySelectorAll(".gallery-item img");
+    const lightboxCloseBtnEl = document.querySelector(".lightbox-close");
+
+    if (lightboxEl && lightboxImgEl && galleryImgEls.length > 0) {
+        const openLightbox = (imgEl) => {
+            lightboxImgEl.src = imgEl.src;
+            lightboxImgEl.alt = imgEl.alt || "";
+            lightboxEl.classList.add("active");
+            document.body.style.overflow = "hidden";
+        };
+
+        const closeLightbox = () => {
+            lightboxEl.classList.remove("active");
+            document.body.style.overflow = "";
+        };
+
+        galleryImgEls.forEach((img) => {
+            img.addEventListener("click", () => openLightbox(img));
+        });
+
+        if (lightboxCloseBtnEl) {
+            lightboxCloseBtnEl.addEventListener("click", closeLightbox);
+        }
+
+        lightboxEl.addEventListener("click", (e) => {
+            if (e.target === lightboxEl) closeLightbox();
+        });
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && lightboxEl.classList.contains("active")) {
                 closeLightbox();
             }
         });
     }
-    // --- 7. Optimized Hero Scroll Fade-Out ---
-    const heroVisual = document.querySelector('.hero-visual-wrapper');
-    const heroSection = document.querySelector('.hero');
 
-    if (heroVisual && heroSection) {
-        window.addEventListener('scroll', () => {
-            const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
-            const heroHeight = heroSection.offsetHeight;
+    // Hero visual scroll effect
+    const heroVisualEl = document.querySelector(".hero-visual-wrapper");
+    const heroSectionEl = document.querySelector(".hero");
 
-            // AGGRESSIVE FADE: 
-            // Becomes fully transparent when user scrolls 60% of the hero's height
-            const fadeEnd = heroHeight * 0.6;
+    if (heroVisualEl && heroSectionEl) {
+        let heroHeight = heroSectionEl.offsetHeight;
+        let ticking = false;
+
+        const updateHeroMetrics = () => {
+            heroHeight = heroSectionEl.offsetHeight;
+        };
+
+        const applyHeroEffect = () => {
+            const scrollPos = window.scrollY;
+            const fadeEnd = heroHeight * 0.7;
+
             let opacity = 1 - (scrollPos / fadeEnd);
 
-            // Clamp values
             if (opacity < 0) opacity = 0;
             if (opacity > 1) opacity = 1;
 
-            // Apply style directly for maximum performance
-            heroVisual.style.opacity = opacity.toFixed(2);
+            heroVisualEl.style.opacity = opacity.toFixed(2);
 
-            // Optional: Scale down slightly as it fades for extra "depth"
-            const scale = 1 + (scrollPos / 2000);
-            heroVisual.style.transform = `scale(${scale})`;
-        });
+            const scale = 1 + (scrollPos / 3000);
+            heroVisualEl.style.transform = `scale(${scale})`;
+
+            ticking = false;
+        };
+
+        const onScrollHero = () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    applyHeroEffect();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        };
+
+        applyHeroEffect();
+
+        window.addEventListener("scroll", onScrollHero, { passive: true });
+        window.addEventListener("resize", updateHeroMetrics);
     }
+
 });

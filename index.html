@@ -2,47 +2,52 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Refined Vanilla | Pure Anarchy</title>
-    <link rel="stylesheet" href="./css/variables.css">
-    <link rel="stylesheet" href="./css/base.css">
-    <link rel="stylesheet" href="./css/layout.css">
-    <link rel="stylesheet" href="./css/components.css">
-    <link rel="stylesheet" href="./css/animations.css">
-    <link rel="stylesheet" href="./css/navbar.css">
-    <link rel="stylesheet" href="./css/hero.css">
-    <link rel="stylesheet" href="./css/gallery.css">
-    <link rel="stylesheet" href="./css/blogs.css">
-    <link rel="stylesheet" href="./css/rules.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/img/logo.png">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./css/variables.css" />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/layout.css" />
+    <link rel="stylesheet" href="./css/components.css" />
+    <link rel="stylesheet" href="./css/animations.css" />
+    <link rel="stylesheet" href="./css/navbar.css" />
+    <link rel="stylesheet" href="./css/hero.css" />
+    <link rel="stylesheet" href="./css/gallery.css" />
+    <link rel="stylesheet" href="./css/blogs.css" />
+    <link rel="stylesheet" href="./css/rules.css" />
 </head>
 
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
     <header role="banner">
         <div class="container nav-container">
-            <a href="./index.html" class="brand">
-                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                    <rect width="28" height="28" rx="4" fill="#157A6E" />
-                    <path d="M7 7H21V21H7V7Z" fill="#1C1D21" />
-                </svg>
+            <a href="./index.html" class="brand" aria-label="Refined Vanilla Home">
+                <img src="./assets/img/logo.png" alt="Refined Vanilla logo" class="brand-logo" width="28" height="28" />
                 <span>Refined Vanilla</span>
             </a>
 
             <div class="nav-actions">
-
-                <button class="nav-toggle" id="nav-toggle" aria-expanded="false">
-                    <svg width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <!-- Mobile nav toggle -->
+                <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu"
+                    aria-label="Open navigation menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+                        aria-hidden="true" focusable="false">
                         <line x1="3" y1="12" x2="21" y2="12" />
                         <line x1="3" y1="6" x2="21" y2="6" />
                         <line x1="3" y1="18" x2="21" y2="18" />
                     </svg>
                 </button>
 
-                <nav>
+                <nav aria-label="Primary">
                     <ul class="nav-menu" id="nav-menu">
                         <li><a href="./index.html" aria-current="page">Home</a></li>
                         <li><a href="#about">About</a></li>
-                        <li><a href="#">Wiki</a></li>
+                        <li><a href="#" aria-disabled="true">Wiki</a></li>
                         <li><a href="./blogs/index.html">Blogs</a></li>
                         <li><a href="#support">Support</a></li>
                         <li><a href="./rules/index.html">Rules</a></li>
@@ -52,19 +57,20 @@
         </div>
     </header>
 
-    <main>
+    <main id="main">
         <section class="hero">
             <div class="hero-visual-wrapper">
                 <div class="hero-ken-burns"></div>
             </div>
 
             <div class="hero-overlay"></div>
-
             <div class="hero-bottom-mask"></div>
 
             <div class="hero-content">
                 <div class="video-title-container">
-                    <svg class="video-title-svg" viewBox="0 0 1500 300" preserveAspectRatio="xMidYMid meet">
+                    <!-- Video masked through text -->
+                    <svg class="video-title-svg" viewBox="0 0 1500 300" preserveAspectRatio="xMidYMid meet"
+                        aria-hidden="true" focusable="false">
                         <defs>
                             <mask id="textMask" x="0" y="0" width="100%" height="100%">
                                 <text x="50%" y="50%" text-anchor="middle" dy=".35em" class="mask-text">
@@ -72,53 +78,61 @@
                                 </text>
                             </mask>
                         </defs>
+
                         <foreignObject x="0" y="0" width="100%" height="100%" mask="url(#textMask)">
                             <div class="video-wrapper" xmlns="http://www.w3.org/1999/xhtml">
                                 <video autoplay muted loop playsinline poster="./assets/img/hero.jpg">
-                                    <source src="./assets/video/hero-bg.mp4" type="video/mp4">
+                                    <source src="./assets/video/hero-bg.mp4" type="video/mp4" />
                                 </video>
                             </div>
                         </foreignObject>
                     </svg>
+
                     <h1 class="sr-only">Refined Vanilla</h1>
                 </div>
+
                 <p class="hero-subtitle">1.21 Pure Vanilla Anarchy. No Claims. No Mercy.</p>
-                <a href="#about" class="btn btn-pulse">Join the Discord</a>
+                <a href="#about" class="btn btn-pulse">Learn More</a>
             </div>
         </section>
 
-        <section id="about" class="container">
-            <div class="section-header reveal">
-                <h2>About us</h2>
-            </div>
-            <div class="about-grid reveal">
-                <div class="about-text">
-                    <h3>Pure Vanilla, Done Right</h3>
-
-                    <p>
-                        <strong>Refined Vanilla</strong> is a Fabric-powered anarchy Minecraft server,
-                        built exactly as the game was meant to be played -
-                        <em>free from the game-altering bugs and compromises</em> introduced by Paper and Folia.
-                    </p>
-
-                    <p>
-                        Running on <strong>Minecraft 1.21.10</strong>, with full support for both
-                        <strong>Java</strong> and <strong>Bedrock Edition</strong>,
-                        the server delivers a truly authentic vanilla experience.
-                    </p>
-
-                    <p>
-                        With <strong>faithful mechanics</strong> ideal for PvP and redstone,
-                        Refined Vanilla offers a competitive environment
-                        where <em>true vanilla mastery</em> thrives.
-                    </p>
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2>About us</h2>
                 </div>
 
-                <div>
-                    <div class="about-visual">
-                        <img src="./assets/img/logo.png" alt="Refined Vanilla Logo">
+                <div class="about-grid reveal">
+                    <div class="about-content">
+                        <h3 class="about-sub-header">Pure Vanilla, Done Right</h3>
+
+                        <div class="about-text-wrapper">
+                            <p class="lead-text">
+                                <strong>Refined Vanilla</strong> is a <strong>Fabric-powered anarchy Minecraft
+                                    server</strong>, exactly as it was meant to
+                                be played - free from the game-altering bugs and compromises introduced by Paper and
+                                Folia.
+                            </p>
+
+                            <p>
+                                Running on <strong>Minecraft 1.21.10</strong>, with full support for both <strong>Java
+                                    and Bedrock Edition</strong>, the
+                                server delivers a truly authentic vanilla experience.
+                            </p>
+
+                            <p>
+                                With faithful mechanics ideal for PvP and redstone, Refined Vanilla offers a competitive
+                                environment where true vanilla mastery thrives.
+                            </p>
+                        </div>
                     </div>
 
+                    <div class="about-visual-container">
+                        <div class="about-glow-aura"></div>
+                        <div class="about-visual">
+                            <img src="./assets/img/logo.png" alt="Refined Vanilla Logo" class="floating-logo" />
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -127,98 +141,115 @@
             <div class="section-header">
                 <h2>A Small Taste</h2>
             </div>
+
             <div class="carousel-container">
-                <button class="carousel-control prev" id="prevBtn" aria-label="Previous image">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <button class="carousel-control prev" id="prevBtn" type="button" aria-label="Previous image">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                        aria-hidden="true" focusable="false">
                         <polyline points="15 18 9 12 15 6"></polyline>
                     </svg>
                 </button>
+
                 <div class="carousel-track" id="carouselTrack">
-                    <div class="gallery-item"><img src="./assets/img/gallery-1.jpg" alt="Spawn Area" loading="lazy">
+                    <div class="gallery-item">
+                        <img src="./assets/img/gallery-1.jpg" alt="Spawn Area" loading="lazy" />
                     </div>
-                    <div class="gallery-item"><img src="./assets/img/gallery-2.jpg" alt="PVP Arena" loading="lazy">
+                    <div class="gallery-item">
+                        <img src="./assets/img/gallery-2.jpg" alt="PVP Arena" loading="lazy" />
                     </div>
-                    <div class="gallery-item"><img src="./assets/img/gallery-3.jpg" alt="Base Build" loading="lazy">
+                    <div class="gallery-item">
+                        <img src="./assets/img/gallery-3.jpg" alt="Base Build" loading="lazy" />
                     </div>
-                    <div class="gallery-item"><img src="./assets/img/gallery-4.jpg" alt="Nether Hub" loading="lazy">
+                    <div class="gallery-item">
+                        <img src="./assets/img/gallery-4.jpg" alt="Nether Hub" loading="lazy" />
                     </div>
                 </div>
-                <button class="carousel-control next" id="nextBtn" aria-label="Next image">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+
+                <button class="carousel-control next" id="nextBtn" type="button" aria-label="Next image">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                        aria-hidden="true" focusable="false">
                         <polyline points="9 18 15 12 9 6"></polyline>
                     </svg>
                 </button>
             </div>
         </section>
 
-        <section id="support" class="container">
-            <div class="section-header reveal">
-                <h2>Support & Vote</h2>
-            </div>
-            <div class="support-wrapper reveal">
-                <div class="glass-card" style="text-align: center;">
-                    <h3>Financial Support</h3>
-
-                    <p style="color: var(--text-dim); margin-bottom: 1.5rem;">
-                        You can support us by contributing through
-                        <strong>Buy Me a Coffee</strong>.
-                    </p>
-
-                    <p style="margin-bottom: 1.5rem;">Your support helps with:</p>
-
-                    <ul style="
-                        list-style: none;
-                        padding: 0;
-                        margin-bottom: 2rem;
-                        color: var(--text-dim);
-                        line-height: 1.8;
-                    ">
-                        <li>• Server hosting & stable uptime</li>
-                        <li>• Performance and infrastructure improvements</li>
-                        <li>• Ongoing development and maintenance</li>
-                        <li>• Promotion and visibility of the server</li>
-                    </ul>
-
-                    <a href="https://buymeacoffee.com/refinedvanilla" target="_blank" class="btn btn-pulse">
-                        Buy Us a Coffee
-                    </a>
-
-                    <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-dim);">
-                        ❤️ Thank you for supporting the future of Refined Vanilla.
-                    </p>
+        <section id="support" class="support-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 id="support-title">Support &amp; Growth</h2>
+                    <p class="section-subtitle">Help us maintain the pure vanilla anarchy experience.</p>
                 </div>
 
-                <div class="glass-card" style="text-align: center;">
-                    <h3>Vote for the Server</h3>
+                <div class="support-grid">
+                    <div class="support-card support-card--premium reveal">
+                        <div class="card-glow-effect"></div>
+                        <div class="support-card-content">
+                            <div class="support-icon">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                                    <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                                    <line x1="6" y1="1" x2="6" y2="4"></line>
+                                    <line x1="10" y1="1" x2="10" y2="4"></line>
+                                    <line x1="14" y1="1" x2="14" y2="4"></line>
+                                </svg>
+                            </div>
+                            <h3>Financial Support</h3>
+                            <p class="text-dim">You can support us by contributing through Buy Me a Coffee:</p>
 
-                    <p style="color: var(--text-dim); margin-bottom: 1.5rem;">
-                        If you enjoy your time on <strong>Refined Vanilla</strong>, a daily vote really helps.<br>
-                        It’s quick, free, and helps keep the server alive and growing.
-                    </p>
+                            <ul class="support-features list-reset">
+                                <li><span>Stable and reliable server uptime</span></li>
+                                <li><span>Performance and infrastructure improvements</span></li>
+                                <li><span>Ongoing development and feature enhancements</span></li>
+                                <li><span>Promotion, visibility, and long-term sustainability</span></li>
+                            </ul>
 
-                    <div class="vote-grid">
-                        <a href="https://www.planetminecraft.com/server/refined-vanilla/vote/" target="_blank"
-                            class="btn-vote">PlanetMC</a>
-                        <a href="https://minecraftservers.org/vote/679791" target="_blank"
-                            class="btn-vote">MCServers</a>
-                        <a href="https://minecraft-server-list.com/server/515516/vote/" target="_blank"
-                            class="btn-vote">MC-Server-List</a>
-                        <a href="https://topg.org/minecraft-servers/server-676677#vote" target="_blank"
-                            class="btn-vote">TopG</a>
+                            <a href="https://buymeacoffee.com/refinedvanilla" target="_blank" rel="noopener noreferrer"
+                                class="btn btn-pulse btn-premium">
+                                Buy Us a Coffee
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="support-card reveal" style="transition-delay: 0.15s;">
+                        <div class="support-card-content">
+                            <div class="support-icon">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <path d="M9 11l3 3L22 4"></path>
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                </svg>
+                            </div>
+                            <h3>Vote for Us</h3>
+                            <p class="text-dim">Boost our visibility daily to bring fresh players to the server.</p>
+
+                            <div class="vote-grid-2x2 mt-6">
+                                <a href="https://www.planetminecraft.com/server/refined-vanilla/vote/"
+                                    class="btn-vote">PlanetMC</a>
+                                <a href="https://minecraftservers.org/vote/679791" class="btn-vote">MCServers</a>
+                                <a href="https://minecraft-server-list.com/server/515516/vote/"
+                                    class="btn-vote">MC-List</a>
+                                <a href="https://topg.org/minecraft-servers/server-676677#vote"
+                                    class="btn-vote">TopG</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
-        <span class="lightbox-close">&times;</span>
-        <img class="lightbox-content" id="lightboxImg" src="" alt="">
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+        <button type="button" class="lightbox-close" aria-label="Close lightbox">&times;</button>
+        <img class="lightbox-content" id="lightboxImg" src="" alt="" />
     </div>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Refined Vanilla. Not affiliated with Mojang.</p>
+            <p>&copy; 2026 Refined Vanilla. Not affiliated with Mojang.</p>
+            <p class="credit">Site by AdirKoko</p>
         </div>
     </footer>
 

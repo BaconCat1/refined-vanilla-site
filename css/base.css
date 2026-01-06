@@ -1,7 +1,14 @@
-/* FILE: /css/base.css */
+/* /css/base.css
+ *
+ * Base styles, reset, and accessibility helpers.
+ * Provides foundational styling for the site.
+ * Applies global resets and basic typography.
+ * Includes accessibility utilities.
+ */
 
-/* Base Reset */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -12,43 +19,145 @@ html {
 }
 
 body {
-  background-color: var(--bg-main);
-  /* "Alive" Grid Background Pattern */
-  background-image:
-    linear-gradient(var(--border-color) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border-color) 1px, transparent 1px),
-    radial-gradient(circle at 50% 0%, var(--bg-darker) 0%, var(--bg-main) 70%);
-  background-size: 50px 50px, 50px 50px, 100% 100%;
-  background-attachment: fixed;
-  color: var(--text-main);
-  font-family: system-ui, -apple-system, sans-serif;
-  line-height: 1.6;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  line-height: 1.6;
+
+  color: var(--text-main);
+  background-color: var(--bg-main);
+
+  overflow-x: hidden;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Typography */
-h1, h2, h3, h4 {
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  line-height: 1.25;
   color: var(--text-bright);
-  font-weight: 800;
-  line-height: 1.1;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: clamp(1.6rem, 2.5vw, 2.1rem);
-    margin-bottom: 1.5rem;
-  margin-top: 0.5rem;
 }
 
-a {
-  color: var(--accent-primary);
-  text-decoration: none;
-  transition: all 0.2s ease;
+h1 {
+  font-size: var(--text-2xl);
+}
+
+h2 {
+  font-size: var(--text-xl);
+}
+
+h3 {
+  font-size: var(--text-lg);
+}
+
+/* Text */
+p {
+  color: var(--text-main);
+}
+
+strong {
   font-weight: 600;
 }
 
-a:hover {
-  color: var(--text-bright);
-  text-shadow: 0 0 10px var(--accent-glow);
+em {
+  font-style: italic;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 3px;
+}
+
+/* Media */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Lists */
+ul,
+ol {
+  list-style-position: inside;
+}
+
+/* Forms */
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 1rem;
+
+  padding: 0.5rem 1rem;
+  background-color: var(--accent-primary);
+  color: #fff;
+
+  z-index: 1000;
+  border-radius: var(--radius-sm);
+
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Anchor offset for fixed header */
+section[id] {
+  scroll-margin-top: calc(var(--header-height) + 1rem);
 }

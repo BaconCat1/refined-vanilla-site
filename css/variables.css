@@ -1,33 +1,71 @@
-/* FILE: /css/variables.css */
+/* /css/variables.css
+ *
+ * Design tokens (colors, type, spacing, effects).
+ * Used throughout the site for consistent styling.
+ */
 
 :root {
-  /* --- DARK THEME (Default) --- */
-  --bg-main: #1C1D21;
+  /* Layout */
+  --header-height: 80px;
+  /* Keep in sync with navbar.css header height */
+  --container-max-width: 1200px;
+
+  /* Colors */
+  --bg-main: #1c1d21;
   --bg-darker: #131416;
-  --bg-card: rgba(28, 29, 33, 0.75); /* Glass effect */
-  --accent-primary: #157A6E; /* Teal/Green Brand Color */
-  --accent-glow: rgba(21, 122, 110, 0.6);
+  --bg-card: rgba(28, 29, 33, 0.75);
+
+  /* Brand */
+  --accent-primary: #157a6e;
   --accent-hover: #129685;
-  --text-main: #B9D0DC;
-  --text-bright: #B9D0DC;
+  --accent-glow: rgba(21, 122, 110, 0.6);
+
+  /* Text */
+  --text-main: #b9d0dc;
+  --text-bright: #b9d0dc;
   --text-dim: #6d7d85;
+
+  /* Borders & shadows */
   --border-color: rgba(185, 208, 220, 0.1);
   --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-  --hero-overlay: radial-gradient(circle, transparent 20%, #1C1D21 90%);
-}
 
-/* --- LIGHT THEME ("Quartz/Stone" Palette) --- */
-body.light-theme {
-  --bg-main: #E9EFF2; /* Light stone blue-grey */
-  --bg-darker: #D1DBE1;
-  --bg-card: rgba(255, 255, 255, 0.85);
-  --accent-primary: #157A6E; /* Brand color remains consistent */
-  --accent-glow: rgba(21, 122, 110, 0.25);
-  --accent-hover: #0f5c52;
-  --text-main: #2D3A41; /* Dark grey for readability */
-  --text-bright: #131416;
-  --text-dim: #5c6d77;
-  --border-color: rgba(21, 122, 110, 0.15);
-  --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
-  --hero-overlay: radial-gradient(circle, transparent 20%, #E9EFF2 90%);
+  /* Effects */
+  --hero-overlay: radial-gradient(circle, transparent 20%, #1c1d21 90%);
+
+  /* Typography */
+  --font-sans: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji",
+    "Segoe UI Emoji";
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* Layout tokens */
+  --header-height: 80px;
+  --container-max-width: 1200px;
+
+  /* (optional but recommended if you use them elsewhere) */
+  --radius-lg: 24px;
+  --radius-xl: 28px;
+
+  /* Type scale */
+  --text-xs: 0.8rem;
+  --text-sm: 0.9rem;
+  --text-md: 1rem;
+  --text-lg: 1.2rem;
+  --text-xl: 2.5rem;
+  --text-2xl: 3rem;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+
+  /* Radius */
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  --radius-xl: 28px;
 }

@@ -1,107 +1,102 @@
-/* FILE: /css/layout.css */
+/* /css/layout.css
+ *
+ * Layout primitives and page spacing.
+ * Defines containers, sections, grids, and utility classes.
+ * Used to structure page content consistently.
+ */
 
+ /* Container */
 .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-/* Default Section Spacing */
-section {
-    padding: 5rem 0;
-}
-
-/* --- ADD THIS: Extra breathing room for the first section --- */
-#about {
-    padding-top: 10rem;
-}
-
-/* Extra space at the very bottom of the page */
-section:last-of-type {
-    padding-bottom: 8rem;
-}
-
-.section-header {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-/* ... existing h2 styles ... */
-.section-header h2 {
-    font-size: clamp(2.4rem, 4vw, 3.4rem);
-    display: inline-block;
-    position: relative;
-}
-
-.section-header h2::after {
-    content: '';
-    display: block;
     width: 100%;
-    height: 4px;
-    background: var(--accent-primary);
-    margin-top: 0.5rem;
+    max-width: var(--container-max-width);
+    margin-inline: auto;
+    padding-inline: 1.25rem;
 }
 
-/* About Grid */
-.about-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    align-items: center;
-}
-
-@media(min-width: 768px) {
-    .about-grid {
-        grid-template-columns: 1fr 1fr;
+@media (min-width: 900px) {
+    .container {
+        padding-inline: 2rem;
     }
 }
 
-/* Support Wrapper */
-.support-wrapper {
+/* Page spacing */
+.page {
+    padding-top: calc(var(--header-height) + 4rem);
+    padding-bottom: 6rem;
+}
+
+.page--compact {
+    padding-top: calc(var(--header-height) + 2.5rem);
+    padding-bottom: 4rem;
+}
+
+/* Sections */
+.section {
+    padding-block: 4rem;
+}
+
+@media (min-width: 900px) {
+    .section {
+        padding-block: 5rem;
+    }
+}
+
+/* Grids */
+.grid {
     display: grid;
     gap: 2rem;
 }
 
-@media(min-width: 768px) {
-    .support-wrapper {
-        grid-template-columns: 1fr 1fr;
+.grid-2 {
+    display: grid;
+    gap: 2.5rem;
+}
+
+@media (min-width: 900px) {
+    .grid-2 {
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: center;
     }
+}
+
+/* Utilities */
+.content-narrow {
+    max-width: 60ch;
+    margin-inline: auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.stack {
+    display: grid;
+    gap: 1rem;
+}
+
+.stack--lg {
+    gap: 2rem;
 }
 
 /* Footer */
 footer {
-    background: var(--bg-darker);
-    border-top: 1px solid var(--border-color);
-    padding: 3rem 0;
-    text-align: center;
-    color: var(--text-dim);
-    margin-top: auto;
+    padding-block: 2.5rem;
 }
 
-.about-text p {
-    margin-bottom: 1.5rem;
+/* Overflow helper */
+.overflow-hidden {
+    overflow: hidden;
 }
 
-.about-visual {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* Internal pages offset for fixed header */
+#main.container {
+    padding-top: 100px !important;
+    min-height: 80vh;
 }
 
-.about-visual img {
-  max-width: 420px; 
-  width: 100%;
-  height: auto;
-  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
-}
-
-
-#gallery,
-#support {
-  margin-top: 10rem;
-}
-
-#support {
-  scroll-margin-top: 120px;
+/* Mobile adjustment */
+@media (max-width: 860px) {
+    #main.container {
+        padding-top: 120px !important;
+    }
 }

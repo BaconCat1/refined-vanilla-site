@@ -1,204 +1,118 @@
-/* =========================================================
-   HERO SECTION LAYOUT
-   ========================================================= */
+/* /css/hero.css
+ *
+ * Home page hero section.
+ * Fullscreen background with overlay and centered content.
+ * Used on the homepage to create a strong visual impact.
+ */
 
 .hero {
     position: relative;
-
-    /* Offset content below a fixed 80px navbar to prevent overlap */
-    margin-top: 80px;
-
-    /* Use viewport height to keep the hero prominent without forcing full-screen */
-    height: 80vh;
+    min-height: 100vh;
+    padding-top: var(--header-height);
 
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
 
-    /* Prevent animated background/video from overflowing the hero bounds */
     overflow: hidden;
-
-    /* Fallback color visible during image/video transitions (e.g., fade out) */
-    background-color: var(--bg-main);
 }
 
-/* --- IMAGE LAYER (opacity is animated via JS) --- */
+/* Background */
 .hero-visual-wrapper {
     position: absolute;
-    inset: 0; /* shorthand for top/left/right/bottom: 0 */
+    inset: 0;
     z-index: 0;
-
-    /* Hint to the browser for smoother opacity transitions (use sparingly) */
-    will-change: opacity;
+    will-change: opacity, transform;
 }
 
 .hero-ken-burns {
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    inset: 0;
 
-    /* Background image is used here to support Ken Burns animation cleanly */
-    background: url('../assets/img/hero.jpg') no-repeat;
-
-    /* Anchor to the top so the navbar doesn't visually "cut off" key content */
-    background-position: top center;
-    background-size: cover;
-
-    /* Slow pan/zoom effect to add subtle motion without video */
-    animation: ken-burns 25s ease-in-out infinite alternate;
+    background: url("../assets/img/hero.jpg") center / cover no-repeat;
+    animation: ken-burns 25s linear infinite;
 }
 
-/* --- OVERLAYS (visual treatment only; not interactive) --- */
+/* Overlays */
 .hero-overlay {
     position: absolute;
     inset: 0;
 
-    /* Dark radial gradient improves text contrast while keeping center brighter */
-    background: radial-gradient(circle, transparent 20%, rgba(28, 29, 33, 0.8) 90%);
-
-    /* Sits above the image but below the text */
+    background: var(--hero-overlay);
     z-index: 1;
-
-    /* Ensure overlay never blocks clicks/taps on CTA elements */
-    pointer-events: none;
 }
 
 .hero-bottom-mask {
     position: absolute;
-    bottom: 0;
     left: 0;
-    width: 100%;
-    height: 150px;
+    right: 0;
+    bottom: 0;
+    height: 140px;
 
-    /* Fade hero into the page background for a smoother section transition */
     background: linear-gradient(to bottom, transparent, var(--bg-main));
-
     z-index: 2;
-    pointer-events: none;
 }
 
-/* --- CONTENT (must sit above overlays) --- */
+/* Content */
 .hero-content {
     position: relative;
-    z-index: 10;
+    z-index: 3;
 
-    width: 100%;
-    max-width: 1200px;
-    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    padding-inline: 1.5rem;
+    max-width: 900px;
 }
 
-/* =========================================================
-   VIDEO MASKED TITLE
-   ========================================================= */
+/* Masked title */
+.video-title-container {
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 1.5rem;
+}
 
 .video-title-svg {
     width: 100%;
     height: auto;
-    display: block;
 }
 
 .mask-text {
-    /* Heavy font weight is important for clean mask edges and legibility */
-    font-family: 'Arial Black', 'Segoe UI Bold', sans-serif;
-    font-weight: 900;
+    font-size: clamp(3rem, 10vw, 6rem);
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
 
-    /* Consider making this responsive (e.g., clamp) if it overflows on small screens */
-    font-size: 145px;
-
-    /* Used as mask fill in SVG workflows */
     fill: white;
-
-    letter-spacing: -2px;
 }
 
-.video-wrapper {
-    width: 100%;
-    height: 100%;
-
-    /* Prevent video edges from bleeding outside the mask container */
-    overflow: hidden;
-}
-
+.video-wrapper,
 .video-wrapper video {
     width: 100%;
     height: 100%;
-
-    /* Keep the video covering the container without distortion */
     object-fit: cover;
 }
 
-/* =========================================================
-   SUBTITLE & CTA
-   ========================================================= */
-
+/* Subtitle */
 .hero-subtitle {
-    /* Pull subtitle slightly closer to the title */
-    margin-top: -1rem;
+    margin-bottom: 2rem;
 
-    /* Push subtitle away from the CTA button for clear hierarchy */
-    margin-bottom: 3rem;
-
-    font-size: clamp(1.1rem, 2.5vw, 2rem);
-
-    /* Subtitle color; ensure it's a valid CSS color value (see note below) */
-    color: B9D0DC;
-
+    font-size: var(--text-lg);
     font-weight: 500;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    color: var(--text-main);
 
-    /* Entrance animation for perceived polish (disable for reduced motion users) */
-    animation: fade-up 1s ease-out both;
-    animation-delay: 0.3s;
+    opacity: 0.9;
 }
 
-.hero .btn {
-    /* Avoid accidental collapsing/stacking issues against preceding elements */
-    margin-top: 0;
-
-    animation: fade-up 1s ease-out both;
-    animation-delay: 0.5s;
-}
-
-/* =========================================================
-   ACCESSIBILITY
-   ========================================================= */
-
-/* Screen-reader-only utility class (visually hidden but accessible) */
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-
-    /* Legacy clipping technique for broad compatibility */
-    clip: rect(0, 0, 0, 0);
-
-    border: 0;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    /* Respect user preference: reduce heavy motion/animation */
-    .video-wrapper video {
-        display: none;
-    }
-
-    /* Provide a static, high-contrast title when video is disabled */
+/* Responsive */
+@media (max-width: 600px) {
     .mask-text {
-        fill: var(--accent-primary);
+        letter-spacing: 0.08em;
     }
 
-    /* Disable motion-heavy effects for accessibility and comfort */
-    .video-title-container {
-        animation: none;
-        filter: none;
-    }
-
-    .hero-ken-burns {
-        animation: none;
-
-        /* Keep a slightly zoomed-in static frame to avoid empty borders */
-        transform: scale(1.05);
+    .hero-subtitle {
+        font-size: var(--text-md);
     }
 }
