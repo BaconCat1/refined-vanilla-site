@@ -1,0 +1,108 @@
+<!-- about/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>About | Refined Vanilla</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/main/logo.png">
+
+    <!-- Shared CSS -->
+    <link rel="stylesheet" href="../css/variables.css" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/animations.css" />
+    <link rel="stylesheet" href="../css/navbar.css" />
+</head>
+
+<body>
+    <header role="banner">
+        <div class="container nav-container">
+            <a href="../index.html" class="brand" aria-label="Refined Vanilla Home">
+                <img src="../assets/img/main/logo.png" alt="Refined Vanilla logo" class="brand-logo" width="28" height="28" />
+                <span>Refined Vanilla</span>
+            </a>
+
+            <div class="nav-actions">
+                <!-- main.js hook -->
+                <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu"
+                    aria-label="Open navigation menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+                        aria-hidden="true" focusable="false">
+                        <line x1="3" y1="12" x2="21" y2="12" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <line x1="3" y1="18" x2="21" y2="18" />
+                    </svg>
+                </button>
+
+                <nav aria-label="Primary">
+                    <ul class="nav-menu" id="nav-menu">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="./index.html" aria-current="page">About</a></li>
+                        <li><a href="#" aria-disabled="true">Wiki</a></li>
+                        <li><a href="../join/index.html">How to Join</a></li>
+                        <li><a href="../blogs/index.html">Blogs</a></li>
+                        <li><a href="../support/index.html">Support</a></li>
+                        <li><a href="../rules/index.html">Rules</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main id="main" class="container">
+        <section class="about-section">
+            <div class="section-header reveal">
+                <h1>About Us</h1>
+            </div>
+
+            <div class="about-grid reveal">
+                <div class="about-content">
+                    <h3 class="about-sub-header">Pure Vanilla, Done Right</h3>
+
+                    <div class="about-text-wrapper">
+                        <p class="lead-text">
+                            <strong>Refined Vanilla</strong> is a <strong>Fabric-powered anarchy Minecraft
+                                server</strong>, exactly as it was meant to
+                            be played - free from the game-altering bugs and compromises introduced by Paper and
+                            Folia.
+                        </p>
+
+                        <p>
+                            Running on <strong>Minecraft 1.21.10</strong>, with full support for both <strong>Java
+                                and Bedrock Edition</strong>, the
+                            server delivers a truly authentic vanilla experience.
+                        </p>
+
+                        <p>
+                            With faithful mechanics ideal for PvP and redstone, Refined Vanilla offers a competitive
+                            environment where true vanilla mastery thrives.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="about-visual-container">
+                    <div class="about-glow-aura"></div>
+                    <div class="about-visual">
+                        <img src="../assets/img/main/logo.png" alt="Refined Vanilla Logo" class="floating-logo" />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Refined Vanilla. Pure vanilla, refined for chaos.</p>
+            <p>Refined Vanilla is not an official Minecraft service. The server is not approved by or associated with Mojang or Microsoft.</p>
+            <p class="credit">Site by <span class="credit-name">AdirKoko</span></p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

@@ -6,8 +6,8 @@
 
 :root {
   /* Layout */
-  --header-height: 80px;
   /* Keep in sync with navbar.css header height */
+  --header-height: 80px;
   --container-max-width: 1200px;
 
   /* Colors */
@@ -36,10 +36,6 @@
   --font-sans: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji",
     "Segoe UI Emoji";
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-
-  /* Layout tokens */
-  --header-height: 80px;
-  --container-max-width: 1200px;
 
   /* (optional but recommended if you use them elsewhere) */
   --radius-lg: 24px;

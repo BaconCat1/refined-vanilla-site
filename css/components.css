@@ -496,6 +496,162 @@
   color: var(--text-bright);
 }
 
+.credit {
+  color: var(--text-dim);
+  font-size: var(--text-sm);
+}
+
+.credit-name {
+  color: var(--accent-primary);
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* Join CTA */
+.join-cta-section {
+  padding-block: var(--space-8);
+}
+
+.join-cta-grid {
+  display: grid;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .join-cta-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+.join-cta-content h2 {
+  margin-bottom: 1rem;
+}
+
+.join-cta-list {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  color: var(--text-main);
+}
+
+.join-cta-list li {
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.join-cta-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: var(--accent-primary);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.join-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.join-cta-media {
+  position: relative;
+}
+
+.join-cta-stack {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.join-cta-stack img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--card-shadow);
+  object-fit: cover;
+}
+
+@media (min-width: 900px) {
+  .join-cta-stack {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .join-cta-stack img:first-child {
+    grid-column: span 2;
+    height: 220px;
+  }
+
+  .join-cta-stack img:nth-child(2),
+  .join-cta-stack img:nth-child(3) {
+    height: 180px;
+  }
+}
+
+/* Donator CTA */
+.donor-cta-section {
+  padding-block: var(--space-7);
+}
+
+.donor-cta-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2.5rem 3rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-color);
+  background: linear-gradient(120deg, rgba(21, 122, 110, 0.18), rgba(19, 20, 22, 0.35));
+  box-shadow: var(--card-shadow);
+}
+
+.donor-cta-content h2 {
+  margin-bottom: 0.75rem;
+}
+
+.donor-cta-content {
+  max-width: 640px;
+}
+
+.donor-cta-badge {
+  display: grid;
+  place-items: center;
+  gap: 0.35rem;
+  min-width: 120px;
+  padding: 1rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid rgba(185, 208, 220, 0.2);
+  background: rgba(19, 20, 22, 0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-bright);
+}
+
+.donor-cta-badge span {
+  font-size: var(--text-xs);
+  color: var(--text-dim);
+}
+
+.donor-cta-badge strong {
+  font-size: var(--text-lg);
+}
+
+@media (max-width: 700px) {
+  .donor-cta-card {
+    padding: 2rem;
+  }
+
+  .donor-cta-badge {
+    width: 100%;
+    justify-self: stretch;
+  }
+}
+
 .text-center {
   text-align: center;
 }
@@ -512,6 +668,106 @@
 
 .is-active {
   color: var(--accent-primary);
+}
+
+/* Contact card */
+.contact-card {
+  padding: 3rem;
+}
+
+.contact-stack {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 900px) {
+  .contact-stack {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3rem;
+  }
+}
+
+.contact-block h4 {
+  font-size: var(--text-lg);
+  margin-bottom: 0.6rem;
+  color: var(--text-bright);
+}
+
+.contact-block--split {
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+@media (min-width: 900px) {
+  .contact-block--split {
+    padding-top: 0;
+    border-top: 0;
+    padding-left: 2.5rem;
+    border-left: 1px solid var(--border-color);
+  }
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.contact-tag {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-dim);
+  border: 1px solid var(--border-color);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+
+.contact-detail {
+  font-weight: 600;
+  color: var(--text-bright);
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.contact-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  background: var(--accent-primary);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  transition:
+    transform 0.2s cubic-bezier(0.2, 0, 0.2, 1),
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.contact-email:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 22px -12px var(--accent-glow);
+}
+
+.contact-divider {
+  height: 1px;
+  width: min(900px, 100%);
+  margin: 1.5rem auto 0;
+  background: linear-gradient(90deg, transparent, rgba(185, 208, 220, 0.4), transparent);
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: 0.75rem;
 }
 
 /* Standard Margins */

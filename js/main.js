@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const navMenuEl = document.getElementById("nav-menu");
 
     if (navToggleEl && navMenuEl) {
-        const navLinks = navMenuEl.querySelectorAll("a");
+        const navLinks = Array.from(navMenuEl.querySelectorAll("a"));
 
         navToggleEl.addEventListener("click", () => {
             const isExpanded = navToggleEl.getAttribute("aria-expanded") === "true";
@@ -25,6 +25,55 @@ document.addEventListener("DOMContentLoaded", () => {
                 navToggleEl.setAttribute("aria-expanded", "false");
             });
         });
+
+        const sectionLinks = navLinks
+            .map((link) => {
+                const href = link.getAttribute("href") || "";
+                if (!href.startsWith("#")) return null;
+                const section = document.getElementById(href.slice(1));
+                if (!section) return null;
+                return { link, section };
+            })
+            .filter(Boolean);
+
+        if (sectionLinks.length > 0) {
+            const headerEl = document.querySelector("header");
+            const currentPath = window.location.pathname;
+            const homeLink = navLinks.find((link) => {
+                const href = link.getAttribute("href") || "";
+                if (!href || href.startsWith("#") || href === "#") return false;
+                if (link.getAttribute("aria-disabled") === "true") return false;
+                try {
+                    const normalizedPath = new URL(href, window.location.href).pathname;
+                    return normalizedPath === currentPath && !href.includes("#");
+                } catch (error) {
+                    return false;
+                }
+            });
+
+            const updateActiveNav = () => {
+                const headerOffset = headerEl ? headerEl.offsetHeight + 12 : 92;
+                let activeLink = null;
+
+                sectionLinks.forEach(({ link, section }) => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= headerOffset && rect.bottom > headerOffset) {
+                        activeLink = link;
+                    }
+                });
+
+                navLinks.forEach((link) => link.removeAttribute("aria-current"));
+                if (activeLink) {
+                    activeLink.setAttribute("aria-current", "page");
+                } else if (homeLink) {
+                    homeLink.setAttribute("aria-current", "page");
+                }
+            };
+
+            updateActiveNav();
+            window.addEventListener("scroll", updateActiveNav, { passive: true });
+            window.addEventListener("resize", updateActiveNav);
+        }
     }
 
     // Header scrolled state

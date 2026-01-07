@@ -1,0 +1,132 @@
+<!-- support/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Support &amp; Growth | Refined Vanilla</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/main/logo.png">
+
+    <!-- Shared CSS -->
+    <link rel="stylesheet" href="../css/variables.css" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/animations.css" />
+    <link rel="stylesheet" href="../css/navbar.css" />
+</head>
+
+<body>
+    <header role="banner">
+        <div class="container nav-container">
+            <a href="../index.html" class="brand" aria-label="Refined Vanilla Home">
+                <img src="../assets/img/main/logo.png" alt="Refined Vanilla logo" class="brand-logo" width="28" height="28" />
+                <span>Refined Vanilla</span>
+            </a>
+
+            <div class="nav-actions">
+                <!-- main.js hook -->
+                <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu"
+                    aria-label="Open navigation menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+                        aria-hidden="true" focusable="false">
+                        <line x1="3" y1="12" x2="21" y2="12" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <line x1="3" y1="18" x2="21" y2="18" />
+                    </svg>
+                </button>
+
+                <nav aria-label="Primary">
+                    <ul class="nav-menu" id="nav-menu">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../about/index.html">About</a></li>
+                        <li><a href="#" aria-disabled="true">Wiki</a></li>
+                        <li><a href="../join/index.html">How to Join</a></li>
+                        <li><a href="../blogs/index.html">Blogs</a></li>
+                        <li><a href="./index.html" aria-current="page">Support</a></li>
+                        <li><a href="../rules/index.html">Rules</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main id="main" class="container">
+        <section class="support-section">
+            <div class="section-header reveal">
+                <h1 id="support-title">Support &amp; Growth</h1>
+                <p class="section-subtitle">Refined Vanilla is made possible by the community, through your support, votes, and continued trust.</p>
+            </div>
+
+            <div class="support-grid">
+                <div class="support-card support-card--premium reveal">
+                    <div class="card-glow-effect"></div>
+                    <div class="support-card-content">
+                        <div class="support-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                                <line x1="6" y1="1" x2="6" y2="4"></line>
+                                <line x1="10" y1="1" x2="10" y2="4"></line>
+                                <line x1="14" y1="1" x2="14" y2="4"></line>
+                            </svg>
+                        </div>
+                        <h3>Financial Support</h3>
+                        <p class="text-dim">You can support us by contributing through Buy Me a Coffee:</p>
+
+                        <ul class="support-features list-reset">
+                            <li><span>Stable and reliable server uptime</span></li>
+                            <li><span>Performance and infrastructure improvements</span></li>
+                            <li><span>Ongoing development and feature enhancements</span></li>
+                            <li><span>Promotion, visibility, and long-term sustainability</span></li>
+                        </ul>
+
+                        <a href="https://buymeacoffee.com/refinedvanilla" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-pulse btn-premium">
+                            Buy Us a Coffee
+                        </a>
+                    </div>
+                </div>
+
+                <div class="support-card reveal" style="transition-delay: 0.15s;">
+                    <div class="support-card-content">
+                        <div class="support-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <path d="M9 11l3 3L22 4"></path>
+                                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                            </svg>
+                        </div>
+                        <h3>Vote for Us</h3>
+                        <p class="text-dim">Boost our visibility daily to bring fresh players to the server.</p>
+
+                        <div class="vote-grid-2x2 mt-6">
+                            <a href="https://www.planetminecraft.com/server/refined-vanilla/vote/"
+                                class="btn-vote">PlanetMC</a>
+                            <a href="https://minecraftservers.org/vote/679791" class="btn-vote">MCServers</a>
+                            <a href="https://minecraft-server-list.com/server/515516/vote/"
+                                class="btn-vote">MC-List</a>
+                            <a href="https://topg.org/minecraft-servers/server-676677#vote"
+                                class="btn-vote">TopG</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Refined Vanilla. Powered by the community.</p>
+            <p>Refined Vanilla is not an official Minecraft service. The server is not approved by or associated with Mojang or Microsoft.</p>
+            <p class="credit">Site by <span class="credit-name">AdirKoko</span></p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

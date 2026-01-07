@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>New Versioning System | Refined Vanilla</title>
+    <title>Why Fabric Keeps Vanilla Honest | Refined Vanilla</title>
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/main/logo.png">
 
     <link rel="stylesheet" href="../css/variables.css" />
@@ -20,8 +20,7 @@
     <header role="banner">
         <div class="container nav-container">
             <a href="../index.html" class="brand" aria-label="Refined Vanilla Home">
-                <img src="../assets/img/main/logo.png" alt="Refined Vanilla logo" class="brand-logo"/>
-
+                <img src="../assets/img/main/logo.png" alt="Refined Vanilla logo" class="brand-logo" width="28" height="28" />
                 <span>Refined Vanilla</span>
             </a>
 
@@ -54,52 +53,46 @@
     <main id="main" class="container">
         <article class="post-wrapper">
             <div class="post-header">
-                <h1>Minecraft Versioning Is Officially Dead</h1>
-                <div class="blog-meta">News • January 6, 2026</div>
-                <div class="blog-byline">By: <span>AdirKoko</span></div>
+                <h1>Why Fabric Keeps Vanilla Honest</h1>
+                <div class="blog-meta">Engineering • January 7, 2024</div>
+                <div class="blog-byline">By: <span>Bacon</span></div>
             </div>
 
             <div class="post-body">
                 <p>
-                    For over a decade, Minecraft players have awaited the next "big number" - from 1.8 to 1.21. However,
-                    Mojang has officially announced a massive shift in how the game will be developed and numbered
-                    moving forward. The era of 1.22 is gone; the era of yearly versioning has begun.
+                    In the video below, cubicmetre makes a blunt case: PaperMC (and similar forks) trade core vanilla
+                    mechanics for performance shortcuts. The result is a server that looks vanilla on the surface, but
+                    behaves differently where it matters most for redstone, TNT machines, and technical builds.
                 </p>
 
-                <img src="../assets/img/post-2/versioning-hero.jpg" alt="Minecraft Versioning Diagram" loading="lazy" />
+                <div class="video-embed" aria-label="Why Fabric keeps vanilla honest">
+                    <iframe src="https://www.youtube.com/embed/XjjXYrMK4qw"
+                        title="Why Fabric keeps vanilla honest"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </div>
 
-                <h2>Why the change?</h2>
-                <p>
-                    The old "one big update per year" model is being retired. Instead, Mojang is moving to <strong>"Game
-                        Drops"</strong> - smaller, more frequent content updates that happen throughout the year.
-                    Because
-                    updates are coming faster, the old 1.x.x numbering system became confusing.
-                </p>
-
-                <blockquote>
-                    "By moving to a calendar-based system, it becomes immediately clear when a feature was added and
-                    which version of the game is the most current."
-                </blockquote>
-
-                <h2>How the new numbers work</h2>
-                <p>
-                    Starting in 2026, versions will follow a simple <code>Year.Update.Patch</code> format.
-                </p>
+                <h2>Why Paper breaks the vanilla promise</h2>
                 <ul>
-                    <li><strong>Year:</strong> The first two digits represent the year (e.g., 26 for 2026).</li>
-                    <li><strong>Update:</strong> The sequence of the "Game Drop" in that year (.1, .2, .3).</li>
-                    <li><strong>Patch:</strong> Minor bug fixes (e.g., 26.1.1).</li>
+                    <li>Core mechanics get rewritten, which breaks redstone and TNT logic when complexity ramps up.</li>
+                    <li>Vanilla features like TNT duping or bedrock breaking are disabled by default and behave
+                        inconsistently even when toggled back on.</li>
+                    <li>Performance gains are not guaranteed; the video shows higher mspt than Fabric on heavy systems.</li>
                 </ul>
 
-                <img src="../assets/img/post-2/game-drops.jpg" alt="Recent Minecraft Game Drops" loading="lazy" />
+                <h2>Fabric keeps the game honest</h2>
+                <ul>
+                    <li>It preserves vanilla logic so your single-player builds behave the same on the server.</li>
+                    <li>Optimization mods like Lithium improve performance without breaking mechanics.</li>
+                    <li>Players can join with a vanilla client—no mod install required.</li>
+                    <li>Server-side tools like Carpet allow safe toggles without gutting the game.</li>
+                </ul>
 
-                <h3>What this means for Refined Vanilla</h3>
                 <p>
-                    For us, nothing changes in terms of commitment. We will continue to keep the server fully up to date
-                    with every new Minecraft release, making sure players always have access to the latest features,
-                    fixes, and improvements as they become available.
+                    For a technical vanilla community, Fabric is the foundation that keeps the game true while still
+                    letting the server scale. That is why Refined Vanilla runs Fabric.
                 </p>
-
 
                 <div style="margin-top: 5rem; text-align: center;">
                     <a href="index.html" class="btn btn--outline">← Back to All Posts</a>
@@ -110,7 +103,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Refined Vanilla. 1.x is history.</p>
+            <p>&copy; 2026 Refined Vanilla. Vanilla, but faster.</p>
             <p>Refined Vanilla is not an official Minecraft service. The server is not approved by or associated with Mojang or Microsoft.</p>
             <p class="credit">Site by <span class="credit-name">AdirKoko</span></p>
         </div>

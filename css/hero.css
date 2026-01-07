@@ -130,13 +130,14 @@
     }
 }
 
-.hero-content .btn {
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
     margin-top: 12rem;
 }
 
-/* Highlighted */
-.credit nm {
-  color: var(--accent-primary);
-  font-style: normal;
-  font-weight: 600;
+.hero-actions .btn {
+    margin-top: 0;
 }

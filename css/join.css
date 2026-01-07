@@ -1,0 +1,73 @@
+/* /css/join.css
+ *
+ * Join page layout and cards.
+ */
+
+.join-section {
+  padding-bottom: 5rem;
+}
+
+.join-grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+@media (min-width: 900px) {
+  .join-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.join-card {
+  text-align: left;
+  padding: 2.75rem;
+}
+
+.join-title {
+  margin-bottom: 0.75rem;
+}
+
+.join-copy {
+  color: var(--text-dim);
+  margin-bottom: 2rem;
+}
+
+.join-version {
+  margin-top: -1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  color: var(--text-bright);
+}
+
+.join-version span {
+  color: var(--accent-primary);
+  font-family: var(--font-mono);
+}
+
+.join-address {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: rgba(19, 20, 22, 0.35);
+  margin-bottom: 1rem;
+}
+
+.join-address:last-child {
+  margin-bottom: 0;
+}
+
+.join-label {
+  font-size: var(--text-xs);
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.join-value {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  color: var(--text-bright);
+}
