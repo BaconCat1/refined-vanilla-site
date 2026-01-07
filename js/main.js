@@ -6,6 +6,10 @@
  */
 
 document.addEventListener("DOMContentLoaded", () => {
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    if (isSafari) {
+        document.body.classList.add("is-safari");
+    }
     // Mobile navigation
     const navToggleEl = document.getElementById("nav-toggle");
     const navMenuEl = document.getElementById("nav-menu");
