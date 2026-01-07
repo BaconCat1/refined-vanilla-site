@@ -166,6 +166,51 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Scroll assist buttons
+    const scrollAssistWrap = document.createElement("div");
+    scrollAssistWrap.className = "scroll-assist-wrap";
+
+    const scrollDownBtn = document.createElement("button");
+    scrollDownBtn.type = "button";
+    scrollDownBtn.className = "scroll-assist scroll-assist--down";
+    scrollDownBtn.setAttribute("aria-label", "Scroll down");
+    scrollDownBtn.textContent = "↓";
+
+    const scrollUpBtn = document.createElement("button");
+    scrollUpBtn.type = "button";
+    scrollUpBtn.className = "scroll-assist scroll-assist--up";
+    scrollUpBtn.setAttribute("aria-label", "Scroll up");
+    scrollUpBtn.textContent = "↑";
+
+    scrollAssistWrap.append(scrollDownBtn, scrollUpBtn);
+    document.body.appendChild(scrollAssistWrap);
+
+    const updateScrollAssist = () => {
+        const docEl = document.documentElement;
+        const canScroll = docEl.scrollHeight - window.innerHeight > 12;
+        const atTop = window.scrollY <= 12;
+        const atBottom = window.scrollY + window.innerHeight >= docEl.scrollHeight - 12;
+        const isLocked = document.body.style.overflow === "hidden";
+        const shouldHideAll = !canScroll || isLocked;
+        scrollDownBtn.classList.toggle("hidden", shouldHideAll || atBottom);
+        scrollUpBtn.classList.toggle("hidden", shouldHideAll || atTop);
+        scrollAssistWrap.classList.toggle("hidden", shouldHideAll);
+    };
+
+    scrollDownBtn.addEventListener("click", () => {
+        const scrollByAmount = Math.round(window.innerHeight * 0.85);
+        window.scrollBy({ top: scrollByAmount, behavior: "smooth" });
+    });
+
+    scrollUpBtn.addEventListener("click", () => {
+        const scrollByAmount = Math.round(window.innerHeight * 0.85);
+        window.scrollBy({ top: -scrollByAmount, behavior: "smooth" });
+    });
+
+    updateScrollAssist();
+    window.addEventListener("scroll", updateScrollAssist, { passive: true });
+    window.addEventListener("resize", updateScrollAssist);
+
     // Hero visual scroll effect
     const heroVisualEl = document.querySelector(".hero-visual-wrapper");
     const heroSectionEl = document.querySelector(".hero");

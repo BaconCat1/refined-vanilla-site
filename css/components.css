@@ -191,6 +191,64 @@
 }
 
 /* ==========================================================================
+   4. SCROLL ASSIST
+   ========================================================================== */
+
+.scroll-assist-wrap {
+  position: fixed;
+  left: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 1000;
+  display: inline-flex;
+  gap: 0.6rem;
+}
+
+.scroll-assist {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: rgba(19, 20, 22, 0.85);
+  color: var(--text-bright);
+  font-size: 1.1rem;
+  letter-spacing: 0;
+  cursor: pointer;
+  box-shadow: 0 12px 28px -18px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.scroll-assist:hover {
+  background: rgba(21, 122, 110, 0.2);
+  transform: translateY(-2px);
+}
+
+.scroll-assist:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 3px;
+}
+
+.scroll-assist.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(6px);
+}
+
+.scroll-assist-wrap.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(6px);
+}
+
+/* ==========================================================================
    ABOUT US: CORRECTED SIDE-BY-SIDE LAYOUT
    ========================================================================== */
 
