@@ -1,0 +1,368 @@
+[Allowed Clients]
+Fabric Client
+Forge Client
+Lunar Client
+Minecraft Console Client (Only for AFK)
+Quilt Client
+Vanilla Client
+
+[Allowed Mod Packs]
+Kami Chan Optimized
+Fabulously Optimized | https://modrinth.com/modpack/fabulously-optimized
+SOP (Simply Optimised) | https://modrinth.com/modpack/sop
+Vulkan Optimized | https://modrinth.com/modpack/vulkan-optimized
+Distant Horizons + Iris Shaders | https://modrinth.com/modpack/distant-horizons-iris-shaders
+
+[Allowed Mods]
+0-9:
+3D Skin Layers
+
+A:
+Advancement Screenshot
+Advancements Reloaded (AdvancementInfo)
+AmbientSounds
+Animated Inventory
+Animatica
+AppleSkin
+Architectury API
+ASH - Another Simple HUD
+ASH 2 - Another Sophisticated HUD
+Asteroid (Not all features are allowed; use at your own risk.) | https://modrinth.com/mod/asteroid
+Auth Me
+Auto Clicker
+Auto HUD
+Auto Reauth
+Auto Reconnect Reforged
+Auto-Run
+AutoRelog
+Axolotl Buckets
+
+B:
+Better Animations Collection
+Better Biome Reblend
+Better Clouds
+Better Mount HUD
+Better Ping Display [Fabric]
+Better Snow Coverage
+Better Sodium Video Settings Button
+Better Sprinting
+Better Statistics Screen
+Better Tab
+BetterF3
+BetterHurtCam
+Block Meter
+Blocky Bubbles
+Blur+
+Blåhaj of Undying
+Bobby
+Boosted Brightness
+Borderless Fullscreen
+Borderless Mining
+Borderless Window
+
+C:
+Capes
+Center View
+Centered Crosshair
+Chat Heads
+Chat Notify
+Chat Sounds
+ChatHighlighter
+ChatShot
+ChunkBorders
+Chunks fade in
+CIT Resewn
+Clean F3
+Clear Hitboxes
+Clear Skies
+Client Maps
+CList
+Cloaks+
+Cloth Config API
+Collective
+Color Me Outlines
+CompleteConfig
+Configurable Boss Bars
+Continuity
+Controlify (Controller support)
+Controlling
+Cool Elytra Roll
+CoordinateBar
+Coordinates Display
+ClientSort | https://modrinth.com/mod/clientsort
+Craftify
+CraftPresence
+CreativeCore
+Crosshair Tweaks
+Cubes Without Borders
+Cull Leaves
+Cull Less Leaves
+CursorCentered Fix
+Custom Splash Screen
+Custom Totem Particles
+CustomHud
+
+D:
+Dark Loading Screen
+Debugify
+Dense Flowers
+Detail Armor Bar
+Distant Horizons
+Do a Barrel Roll
+Don't Clear Chat History
+Durability Notifier
+Durability Viewer
+Durability101
+Dynamic FPS
+
+E:
+Eating Animation
+Effective
+Elytra Physics
+[EMF] Entity Model Features
+Emoji Type
+Enchantment Descriptions
+Enhanced Attack Indicator
+Enhanced Block Entities
+Entity Culling
+Equipment Compare
+Essential Mod
+[ETF] Entity Texture Features
+Exordium
+ExtraPlayerRenderer (Paper Doll)
+
+F:
+Fabric API
+Fabric Language Kotlin
+Fabrishot
+Fadeless
+Falling Leaves
+FancyMenu
+Farsight
+FastOpenLinksAndFolders
+FastQuit
+FerriteCore
+Figura
+First-person Model
+Fishing Ruler
+Flashback
+Fluid Void Fading
+Forge Config API Port
+Forge Config Screens
+FPS - Display
+FPS Reducer
+Full Brightness Toggle
+
+G:
+Gamma Utils (Fullbright)
+GoogleChat
+Grid
+GUI Scale
+
+H:
+Held Item Info
+Hide Item Frame
+HitColor
+Hold My Items
+Hold That Chunk
+
+I:
+Iceberg
+ImmediatelyFast
+ImmersiveThunder
+In-Game Account Switcher
+Indium
+Ingame Real Time Clock
+Inspecio
+Inventory Spam
+Iris Shaders
+Item Borders
+Item Model Fix
+ItemPhysic Lite
+ItemScroller (UneasyVersion)
+
+J:
+Just Enough Items (JEI)
+
+K:
+kennytvs-epic-force-close-loading-screen-mod-for-fabric
+Konkrete
+Kotlin for Forge
+Krypton
+
+L:
+LambdaBetterGrass
+LambDynamicLights - Dynamic Lights
+Language Reload
+LazyDFU
+Legacy Potion Colors
+Legendary Tooltips
+Light Overlay
+Lighty
+Litematica (No EasyPlace)
+Lithium
+Load My Resources
+Logical Zoom
+Low Fire
+
+M:
+M-Tape
+Main Menu Credits
+Make Bubbles Pop
+Map In Slot
+Map Tooltip
+MapMipMapMod
+Memory Leak Fix
+MidnightControls
+MidnightLib
+Mindful Darkness
+Minecraft Ghost Totem
+minecraft-world-downloader
+MiniHUD
+Mixin Conflict Helper
+MixinTrace
+Mod Menu
+Model Gap Fix
+Moonrise
+More Block Predicates
+More Chat History
+More Culling
+More Culling Extra
+MoreMcmeta
+Motion Blur
+Music Delay Reducer
+My Totem Doll
+
+N:
+NarrusYeetus
+Nether Coords
+No Fade
+No More Useless Keys - NMUK
+No Screen Bobbing
+No Telemetry
+NoMenuBlur
+Not Enough Animations
+Not Enough Crashes
+NoTextureRotations
+NotifMod
+Noxesium
+Nvidium
+
+O:
+Ok Zoomer
+OptiFabric
+OptiFine
+OptiGUI
+
+P:
+Panorama Screens
+Panorama Screenshot
+Paper Doll
+Particle Core
+Particle Rain
+Particular ✨
+Phase's Discord Rich Presence
+Phosphor
+Physics Mod
+Pick Up Notifier
+Placement Preview
+Potions Re-Glint
+Presence Footsteps
+Prism
+Puzzle
+Puzzles Lib
+
+Q:
+Quiet-Fishing
+Quilted Fabric API (QFAPI) / Quilt Standard Libraries (QSL)
+
+R:
+Raised Clouds
+Rebind Narrator
+RebindAllTheKeys
+Reconnect Mod: Reloaded
+Reese's Sodium Options
+Remove Reloading Screen
+ReplayMod
+Roughly Enough Items (REI)
+
+S:
+Satin API
+SchematicPreview
+SchematicTools
+Sciophobia
+Screenshot to Clipboard
+Screenshot Viewer
+Seamless
+Searchables
+Server Pinger Fixer
+Shulker Box Tooltip
+Shulker Tooltip
+Silent Screenshots
+Simple Armor Hud
+Simple Block Overlay
+Simple Shulker Preview
+Simple Voice Chat
+Simple World Downloader
+SimpleAutoClicker (2s cooldown)
+Skin Shuffle
+Smooth Boot (Fabric)
+Smooth Scrolling
+Smooth Scrolling Refurbished
+Smooth Swapping
+SmoothMenu Refabricated
+SneakFix
+Sodium
+Sodium Extra (NoFog not allowed)
+Sodium Shadowy Path Blocks
+Sound Physics Remastered
+Sparkle!
+Spell Checker
+Squeedometer
+Status Effect Timer
+Stendhal
+Subtle Effects
+
+T:
+TCDCommons API
+Time Changer
+Toggle Sprint Display
+Toggleable PieChart
+ToolTipFix
+Totem Tweaks
+
+U:
+uku's Armor HUD
+ukulib
+Unknown
+
+V:
+Vertical Hotbar
+Verticality
+Very Many Players (Fabric)
+ViaFabricPlus (No support provided for issues. We only support the native server version without this mod.)
+View Lock
+ViewLockerMod
+Viewmodel Changer
+Visuality
+voxy
+VulkanMod
+
+W:
+Wavey Capes
+Where Is It | https://modrinth.com/mod/where-is-it
+Where Is It (Port) | https://modrinth.com/mod/where-is-it-port
+WorldTools
+
+X:
+Xaero's Minimap
+Xaero's World Map
+
+Y:
+YetAnotherConfigLib (YACL)
+Your Options Shall Be Respected (YOSBR)
+
+Z:
+Zoomglass
+Zoomify
+Zume
