@@ -102,10 +102,6 @@ function renderAllowedMods(rootEl, data) {
         <span><strong>${allMods.length}</strong> Allowed Mods</span>
     `;
 
-    const editNoteEl = document.createElement("p");
-    editNoteEl.className = "allowed-mods-edit-note";
-    editNoteEl.innerHTML = 'To update this list, edit <code>assets/data/allowed-mods-list.txt</code>.';
-
     const clientsCard = createChipCard("Allowed Clients", data.clients, (item) => getClientOfficialUrl(item));
     const packsCard = createChipCard("Allowed Mod Packs", data.modPacks, (item) => getModrinthSearchUrl(item, "modpacks"));
 
@@ -182,7 +178,6 @@ function renderAllowedMods(rootEl, data) {
 
     rootEl.append(
         summaryEl,
-        editNoteEl,
         topCardsWrapEl,
         searchWrapEl,
         groupsWrapEl,
