@@ -337,7 +337,6 @@ Totem Tweaks
 U:
 uku's Armor HUD
 ukulib
-Unknown
 
 V:
 Vertical Hotbar
