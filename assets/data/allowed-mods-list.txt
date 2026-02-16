@@ -64,6 +64,8 @@ Borderless Window
 
 C:
 Capes
+Carpet | https://modrinth.com/mod/carpet
+Carpet TIS Addition | https://modrinth.com/mod/carpet-tis-addition
 Center View
 Centered Crosshair
 Chat Heads
