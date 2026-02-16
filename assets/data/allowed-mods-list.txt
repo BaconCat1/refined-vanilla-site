@@ -35,7 +35,9 @@ Auto Reauth
 Auto Reconnect Reforged
 Auto-Run
 AutoRelog
+Axiom | https://modrinth.com/mod/axiom
 Axolotl Buckets
+
 
 B:
 Better Animations Collection
@@ -179,7 +181,7 @@ Iris Shaders
 Item Borders
 Item Model Fix
 ItemPhysic Lite
-ItemScroller (UneasyVersion)
+ItemScroller (UneasyVersion) | https://github.com/hd926/itemscroller/releases
 
 J:
 Just Enough Items (JEI)
@@ -230,6 +232,7 @@ More Culling
 More Culling Extra
 MoreMcmeta
 Motion Blur
+Mouse Tweaks | https://modrinth.com/mod/mouse-tweaks
 Music Delay Reducer
 My Totem Doll
 
@@ -353,6 +356,7 @@ Wavey Capes
 Where Is It | https://modrinth.com/mod/where-is-it
 Where Is It (Port) | https://modrinth.com/mod/where-is-it-port
 WorldTools
+WorldEdit (Non functional on server) | https://modrinth.com/plugin/worldedit
 
 X:
 Xaero's Minimap
