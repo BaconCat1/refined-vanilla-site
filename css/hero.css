@@ -92,9 +92,10 @@
 
     fill: white;
 
-    stroke: rgba(0, 0, 0, 0.75);
-    stroke-width: 6px;
+    stroke: rgba(0, 0, 0, 0.95);
+    stroke-width: 8px;
     paint-order: stroke fill;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.8));
 }
 
 .video-wrapper,
@@ -146,6 +147,7 @@ body.is-safari .video-title-video {
 
     color: var(--text-bright);
     opacity: 0.95;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 0, 0, 0.6);
 }
 
 
