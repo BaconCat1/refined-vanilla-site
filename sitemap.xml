@@ -43,6 +43,42 @@
         <priority>0.6</priority>
     </url>
     <url>
+        <loc>https://www.refinedvanilla.net/blogs/what-is-vanilla-anarchy.html</loc>
+        <lastmod>2026-02-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.refinedvanilla.net/blogs/rules-explained.html</loc>
+        <lastmod>2026-02-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.refinedvanilla.net/blogs/how-to-join-refinedvanilla.html</loc>
+        <lastmod>2026-02-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.refinedvanilla.net/blogs/how-to-survive-anarchy.html</loc>
+        <lastmod>2026-02-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.refinedvanilla.net/blogs/best-strategies-new-players.html</loc>
+        <lastmod>2026-02-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.refinedvanilla.net/blogs/vanilla-vs-semi-vanilla-vs-anarchy.html</loc>
+        <lastmod>2026-02-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
         <loc>https://www.refinedvanilla.net/rules/</loc>
         <lastmod>2026-01-10</lastmod>
         <changefreq>monthly</changefreq>
