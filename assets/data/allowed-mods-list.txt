@@ -245,6 +245,7 @@ No Fade
 No More Useless Keys - NMUK
 No Screen Bobbing
 No Telemetry
+No Texture Rotations | https://modrinth.com/mod/notexturerotations
 NoMenuBlur
 Not Enough Animations
 Not Enough Crashes
@@ -356,6 +357,7 @@ W:
 Wavey Capes
 Where Is It | https://modrinth.com/mod/where-is-it
 Where Is It (Port) | https://modrinth.com/mod/where-is-it-port
+Wi-Zoom | https://modrinth.com/mod/wi-zoom
 WorldTools
 WorldEdit (Non functional on server) | https://modrinth.com/plugin/worldedit
 
