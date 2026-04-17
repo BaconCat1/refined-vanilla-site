@@ -256,6 +256,53 @@
     padding-block: var(--space-8);
 }
 
+/* ==========================================================================
+   FAQ PLACEHOLDER
+   ========================================================================== */
+
+.faq-section {
+  padding-bottom: var(--space-8);
+}
+
+.faq-shell {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.faq-placeholder {
+  text-align: center;
+}
+
+.faq-placeholder .card-glow {
+  inset: auto 0 0 auto;
+}
+
+.faq-kicker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.9rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid rgba(21, 122, 110, 0.28);
+  border-radius: 999px;
+  color: var(--accent-primary);
+  background: rgba(21, 122, 110, 0.08);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.faq-placeholder p {
+  max-width: 54ch;
+  margin: 0 auto;
+  color: var(--text-main);
+}
+
+.faq-placeholder p + p {
+  margin-top: 1rem;
+}
+
 /* 1. THE GRID: 1.2fr Left / 0.8fr Right */
 .about-grid {
     display: grid;
