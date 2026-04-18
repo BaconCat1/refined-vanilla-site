@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="A simple explanation of how Ruthenium groups nearby chunks and runs work in parallel." />
+    <meta property="og:title" content="How Ruthenium Handles Chunks | RefinedVanilla FAQ" />
+    <meta property="og:description"
+        content="A simple explanation of how Ruthenium groups nearby chunks and runs work in parallel" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://www.refinedvanilla.net/faq/region-threading.html" />
+    <meta property="og:image" content="https://www.refinedvanilla.net/assets/img/main/hero.jpg" />
+    <meta property="og:site_name" content="Refined Vanilla" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How Ruthenium Handles Chunks | RefinedVanilla FAQ" />
+    <meta name="twitter:description"
+        content="A simple explanation of how Ruthenium groups nearby chunks and runs work in parallel." />
+    <meta name="twitter:image" content="https://www.refinedvanilla.net/assets/img/main/hero.jpg" />
+
+    <title>How Ruthenium Handles Nearby Chunks | RefinedVanilla FAQ</title>
+    <link rel="canonical" href="https://www.refinedvanilla.net/faq/region-threading.html" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/main/logo.png">
+
+    <link rel="stylesheet" href="../css/variables.css" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/animations.css" />
+    <link rel="stylesheet" href="../css/navbar.css" />
+    <link rel="stylesheet" href="../css/blogs.css" />
+</head>
+
+<body>
+    <header role="banner">
+        <div class="container nav-container">
+            <a href="../index.html" class="brand" aria-label="Refined Vanilla Home">
+                <picture>
+                    <source type="image/webp" srcset="../assets/img/main/logo-128.webp" />
+                    <img src="../assets/img/main/logo.png" alt="Refined Vanilla logo" class="brand-logo" width="28" height="28" />
+                </picture>
+                <span>Refined Vanilla</span>
+            </a>
+
+            <div class="nav-actions">
+                <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu"
+                    aria-label="Open navigation menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+                        aria-hidden="true" focusable="false">
+                        <line x1="3" y1="12" x2="21" y2="12" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <line x1="3" y1="18" x2="21" y2="18" />
+                    </svg>
+                </button>
+
+                <nav aria-label="Primary">
+                    <ul class="nav-menu" id="nav-menu">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../about/index.html">About</a></li>
+                        <li><a href="#" aria-disabled="true">Wiki</a></li>
+                        <li><a href="../join/index.html">How to Join</a></li>
+                        <li><a href="../blogs/index.html">Blogs</a></li>
+                        <li><a href="../support/index.html">Support</a></li>
+                        <li><a href="../rules/index.html">Rules</a></li>
+                        <li><a href="../allowed-mods/index.html">Allowed Mods</a></li>
+                        <li><a href="./index.html" aria-current="page">FAQ</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main id="main" class="container">
+        <article class="post-wrapper">
+            <div class="post-header">
+                <div class="blog-meta">Engineering • FAQ</div>
+                <h1>How Ruthenium Handles Chunks.</h1>
+                <p class="blog-excerpt">
+                    Ruthenium is our Fabric fork. Its job here is simple: keep nearby activity grouped together, let separate areas run at the same time, and avoid two threads touching the same space in conflicting ways.
+                </p>
+            </div>
+
+            <div class="post-body">
+                <h2>TL;DR</h2>
+                <p>
+                    Ruthenium uses region-based parallelism. The world is partitioned
+                    into ownership domains, each active domain gets enough surrounding space to operate safely, and a
+                    ticking region is not allowed to expand while it is already running. If two regions become too
+                    close, they merge. If a region becomes sparse enough, it can be recalculated and split. This region model is similar to what is used by <a href="https://github.com/papermc/folia" style="color: -webkit-link; text-decoration: underline;">
+                    Folia
+                </a>.
+                </p>
+
+                <h2>What a region actually is</h2>
+                <p>
+                    A region is the scheduler's ownership unit for world activity. It is a set of
+                    chunk space plus region-local state, and the most important rule is exclusivity: a live chunk holder
+                    belongs to one and only one live region. That gives the system a single authority over each active area.
+                </p>
+                <p>
+                    Ruthenium also does not maintain this purely on a raw chunk level (that would be too slow). It groups chunks into larger
+                    internal region sections first, then builds regions from those sections. That reduces maintenance
+                    cost while still tracking locality well enough for scheduling decisions.
+                </p>
+                <p>
+                    A region also owns region-local state: things like its own tick progress, the entities and chunks
+                    it is currently responsible for, and other per-region bookkeeping. That state is only supposed to
+                    be touched by the thread currently ticking that region.
+                </p>
+
+                <h2>The invariants that make this safe</h2>
+                <p>
+                    The regionizer exists to preserve a few hard guarantees so multiple areas can run in parallel
+                    without any races.
+                </p>
+                <ul>
+                    <li>Every live chunk holder maps to exactly one region.</li>
+                    <li>A region owns enough nearby section space to satisfy its merge buffer.</li>
+                    <li>A ticking region cannot claim new outward territory mid-tick.</li>
+                    <li>Regions that end up adjacent cannot keep ticking side by side forever; they eventually merge.</li>
+                    <li>A region that becomes disconnected should eventually be split back into independent pieces.</li>
+                    <li>Region state is explicit: ready, ticking, transient, or dead.</li>
+                </ul>
+                <p>
+                    The second and third guarantees are the main sections of the design. They are what let a ticking region
+                    touch nearby chunk data without discovering that another thread claimed the same boundary space at
+                    the same time.
+                </p>
+
+                <h2>Why the merge radius exists</h2>
+                <p>
+                    If two active areas are close enough that either one could load or interact with the other's nearby
+                    chunk space, they are not truly independent and will slow each other down or cause issues. We solve that by maintaining a merge radius
+                    around owned region sections.
+                </p>
+                <p>
+                    In other words, a region owns not only the section space it is actively using, but also enough
+                    surrounding space to prevent another region from forming directly on its edge. That buffer is
+                    what makes synchronous nearby chunk work safe.
+                </p>
+                <p>
+                    Another way to say it: a region should never start ticking with a directly adjacent active
+                    neighbor. If two active areas get close enough that they can no longer be treated as isolated, the
+                    system stops pretending they are independent and merges them.
+                </p>
+
+                <h2>What happens while a region is ticking</h2>
+                <p>
+                    Once a region enters the ticking state, its owned area is frozen for that tick.
+                    That rule prevents two active regions from racing toward the same unowned boundary and claiming it
+                    concurrently.
+                </p>
+                <p>
+                    If new work appears that would require an expansion or merge, we record that relationship,
+                    but do not allow the currently ticking region to just grow outward on the spot. Ownership
+                    changes happen at controlled handoff points, not in the middle of arbitrary work.
+                </p>
+
+                <h2>Transient regions and deferred merges</h2>
+                <p>
+                    When a merge is needed and one side is already ticking, we will defer the full merge. The
+                    non-ticking side can become transient relative to the ticking side, and the actual merge is
+                    completed after the ticking region finishes.
+                </p>
+                <p>
+                    This is a key part of the design. It preserves ownership correctness without violating the
+                    no-expansion rule for active regions. The scheduler can acknowledge that a merge is now required
+                    without introducing a race by performing it immediately.
+                </p>
+
+                <h2>How splitting works</h2>
+                <p>
+                    Regions are not permanent partitions. As players move away and chunk activity dies down, a large
+                    region can become mostly empty or disconnected. We track dead or empty region sections and
+                    uses recalculation thresholds to decide when it is worth checking whether the region can be split.
+                </p>
+                <p>
+                    If enough dead space accumulates, the region is recalculated for independent subgraphs and can be
+                    broken back into smaller regions. This keeps the scheduler from staying over-merged after the
+                    workload has dispersed.
+                </p>
+                <p>
+                    When that happens, the child regions inherit the parent's local tick counters so scheduled work
+                    does not suddenly shift in relative timing just because the shape of the region changed.
+                </p>
+
+                <h2>Where the scheduler fits in</h2>
+                <p>
+                    Regionizing decides what can safely run in parallel. The scheduler decides which runnable region
+                    goes to which tick runner and when. Those are separate problems. You can have a good region model
+                    and still leave performance on the table if your scheduler is weak.
+                </p>
+                <p>
+                    In simple terms, the scheduler operates on an EDF-style model. Runnable region tasks are ordered by
+                    deadline, and the soonest one gets priority. On top of that, it tries to preserve locality, reduce
+                    idle time before ticks, and rebalance overdue work when one runner falls behind.
+                </p>
+                <p>
+                    The important detail is that regions tick independently. One region missing its 20 TPS target does
+                    not automatically drag another region off schedule, because each region tracks its own next start
+                    time instead of waiting on a single shared world tick loop.
+                </p>
+
+                <h2>How the scheduler works</h2>
+                <p>
+                    EDF means Earliest Deadline First. Every runnable region task has a tick deadline, and the task
+                    with the earliest deadline gets priority. When a runner finishes its current work, it looks for the
+                    next runnable region with the soonest deadline and takes that task.
+                </p>
+                <p>
+                    Left completely alone, this kind of scheduler is simple and predictable, but it can also bounce
+                    regions between runners too freely. That is good for hitting deadlines, but not always ideal for
+                    cache warmth or per-region continuity.
+                </p>
+                <p>
+                    Internally, the scheduler uses ordered queues protected by a scheduler lock. Queue
+                    operations such as insert, poll, and requeue go through that lock so selection stays atomic and
+                    race-free. Ordering is deadline-first, with a unique task id used as a tie-breaker.
+                </p>
+                <p>
+                    The result is still deadline-driven first, but not naive. The scheduler tries to keep urgency,
+                    locality, and runner utilization in balance instead of optimizing for only one of those things.
+                </p>
+                <p>
+                    Folia describes this as an earliest-start-time-first schedule that ends up behaving like EDF for
+                    ticking, because each start time implies a deadline 50ms later. The goal is simple: if a region
+                    can usually finish inside that 50ms budget and the pool is not saturated, it should still hold 20 TPS.
+                </p>
+                <ul>
+                    <li><strong>Mid-tick work</strong> lets a runner execute queued region tasks while waiting for the main tick deadline.</li>
+                    <li><strong>Work stealing</strong> lets overdue work migrate when one runner falls behind badly enough.</li>
+                </ul>
+
+                <h2>Tick counters and the global region</h2>
+                <p>
+                    Region threading also changes what a "tick counter" means. In vanilla there is effectively one
+                    current tick and one world game time. In a regionized model, those counters are split so local
+                    scheduling stays local.
+                </p>
+                <p>
+                    Current tick and redstone time are maintained per region, while global game time and daylight time
+                    live in a separate global region. At the start of each region tick, the region takes a snapshot of
+                    the global values so code running mid-tick sees a stable view instead of time changing underneath it.
+                </p>
+                <p>
+                    That global region is also the owner for state that is not naturally tied to one local area:
+                    weather, game rules, world border behavior, console commands, and similar world-global tasks.
+                    Unlike normal regions, it is never split or merged.
+                </p>
+                <p>
+                    Merges need a little bookkeeping here. If one region is merged into another, absolute deadlines
+                    tied to local current tick or redstone tick have to be offset so their relative timing stays the
+                    same after the merge.
+                </p>
+
+                <h2>Mid-tick work and buffered deadlines</h2>
+                <p>
+                    One of the more interesting parts of the scheduler is that a runner does not always sit idle while
+                    waiting for the formal start of a region tick. If there is safe queued work available, it can run
+                    that work until a buffered deadline says it is time to stop and prepare for the real tick.
+                </p>
+                <p>
+                    The idea is to shrink backlog without letting that side work spill into the main region tick
+                    budget. The scheduler uses the time before the tick productively, but not recklessly.
+                </p>
+
+                <h2>Work Stealing</h2>
+                <p>
+                    Work stealing does not mean random task migration. The scheduler still tries to keep
+                    regions on the same runner when that is working. Stealing is the fallback when a runner is late
+                    enough that catching up matters more than keeping that region local.
+                </p>
+                <p>
+                    With stealing, each runner effectively has its own local queue, plus access to a global
+                    scheduling view. Selection prefers the best local or global deadline candidate first, then checks
+                    whether another runner's head task has become stealable. That gives the scheduler a way to rebalance
+                    overload without constantly destroying locality.
+                </p>
+
+                <h2>Cross-region work</h2>
+                <p>
+                    The easy case is work that stays inside one region. The harder case is anything that needs to
+                    touch another region that may already be ticking, may be transient, or may not even exist yet.
+                    The safe way to do that is not direct access, but queued handoff.
+                </p>
+                <p>
+                    That same issue is what makes more complicated actions like teleportation thread-safe. A simple
+                    teleport is really two stages: remove and transform on the source region, then asynchronously place
+                    on the destination region. Portal travel adds a search-or-create stage in the middle because the
+                    final exit location is not known up front.
+                </p>
+
+                <h2>Shutdown and unfinished teleports</h2>
+                <p>
+                    Shutdown has to respect that some operations may be currently happening. Teleports are the clearest example.
+                    If the server stops while an entity is between regions, the shutdown path has to finish that handoff
+                    in a controlled way before world and player data are saved.
+                </p>
+                <p>
+                    That is why the order must differ from vanilla. The region scheduler is stopped first, chunk systems
+                    are halted before saving, and pending teleports are resolved before player data is written. If a  teleport is in progress,
+                    the safest move is to finish placing the entity at the known
+                    destination. If a portal teleport is still missing its final exit position, the fallback is to put
+                    the entity back at the source side rather than guess against a half-shutdown world.
+                </p>
+
+                <div style="margin-top: 5rem; text-align: center;">
+                    <a href="index.html" class="btn btn--outline">← Back to FAQ</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 www.refinedvanilla.net. We patched that.</p>
+            <p>Refined Vanilla is not an official Minecraft service. The server is not approved by or associated with Mojang or Microsoft.</p>
+            <p class="credit">Site by <span class="credit-name">AdirKoko</span> and <span class="credit-name">Bacon</span></p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

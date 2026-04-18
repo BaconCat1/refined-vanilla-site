@@ -97,6 +97,12 @@
         <priority>0.6</priority>
     </url>
     <url>
+        <loc>https://www.refinedvanilla.net/faq/region-threading.html</loc>
+        <lastmod>2026-04-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://www.refinedvanilla.net/support/</loc>
         <lastmod>2026-02-18</lastmod>
         <changefreq>monthly</changefreq>

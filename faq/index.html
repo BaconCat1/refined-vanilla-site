@@ -5,10 +5,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
-        content="Frequently asked questions for Refined Vanilla are on the way." />
+        content="Browse Refined Vanilla FAQs covering Ruthenium, server behavior, joining, and other common player questions." />
     <meta property="og:title" content="FAQ | RefinedVanilla 1.21.11" />
     <meta property="og:description"
-        content="Frequently asked questions for Refined Vanilla are on the way. Check back soon for answers about joining, rules, support, and gameplay." />
+        content="Browse Refined Vanilla FAQs covering Ruthenium, server behavior, joining, and other common player questions." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.refinedvanilla.net/faq/" />
     <meta property="og:image" content="https://www.refinedvanilla.net/assets/img/main/hero.jpg" />
@@ -16,7 +16,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="FAQ | RefinedVanilla 1.21.11" />
     <meta name="twitter:description"
-        content="Frequently asked questions for Refined Vanilla are on the way. Check back soon for answers about joining, rules, support, and gameplay." />
+        content="Browse Refined Vanilla FAQs covering Ruthenium, server behavior, joining, and other common player questions." />
     <meta name="twitter:image" content="https://www.refinedvanilla.net/assets/img/main/hero.jpg" />
 
     <title>FAQ | RefinedVanilla 1.21.11</title>
@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="../css/components.css" />
     <link rel="stylesheet" href="../css/animations.css" />
     <link rel="stylesheet" href="../css/navbar.css" />
+    <link rel="stylesheet" href="../css/blogs.css" />
 </head>
 
 <body>
@@ -71,25 +72,43 @@
     </header>
 
     <main id="main" class="container">
-        <section class="faq-section reveal" aria-labelledby="faq-heading">
-            <div class="section-header">
-                <h1 id="faq-heading">FAQ</h1>
-                <p class="section-subtitle">Answers for new players, returning players, and the permanently suspicious are on the way.</p>
+        <section class="faq-section">
+            <div class="section-header reveal">
+                <h1>FAQ</h1>
+                <p class="section-subtitle">
+                    Short answers to the questions players keep asking about the server, the software behind it, and how it behaves in practice.
+                </p>
             </div>
 
-            <div class="faq-shell">
-                <article class="card card--premium faq-placeholder">
-                    <div class="card-glow"></div>
-                    <div class="faq-kicker">Coming Soon</div>
-                    <p>
-                        This page is being built out now. It will cover the questions players ask most about joining,
-                        rules, allowed mods, support, and the server itself.
-                    </p>
-                    <p>
-                        Until then, check the <a href="../join/index.html">How to Join</a>,
-                        <a href="../rules/index.html">Rules</a>, and
-                        <a href="../allowed-mods/index.html">Allowed Mods</a> pages.
-                    </p>
+            <div class="blog-list-container">
+                <article class="blog-card reveal">
+                    <div class="blog-content">
+                        <div class="blog-meta">Engineering • FAQ</div>
+
+                        <h2 class="blog-title">
+                            <a href="./region-threading.html">Regionalizing - How Ruthenium Handles Chunks</a>
+                        </h2>
+
+                        <p class="blog-excerpt">
+                            A simpler breakdown of how our Fabric fork, Ruthenium, groups nearby chunks, runs safe parallel work, and avoids worlds fighting over the same area.
+                        </p>
+
+                        <a href="./region-threading.html" class="btn">Read Answer</a>
+                    </div>
+                </article>
+
+                <article class="blog-card reveal">
+                    <div class="blog-content">
+                        <div class="blog-meta">More • Soon</div>
+
+                        <h2 class="blog-title">More answers are on the way</h2>
+
+                        <p class="blog-excerpt">
+                            We are building out more FAQ pages for joining, mechanics, performance, Bedrock support, and other common questions.
+                        </p>
+
+                        <a href="../join/index.html" class="btn btn--outline">How to Join</a>
+                    </div>
                 </article>
             </div>
         </section>
