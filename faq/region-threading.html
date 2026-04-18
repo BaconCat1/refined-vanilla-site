@@ -305,6 +305,17 @@
                     the entity back at the source side rather than guess against a half-shutdown world.
                 </p>
 
+                <h2>A couple vanilla quirks</h2>
+                <p>
+                    Some odd mechanics matter enough to preserve even in a region-threaded world. One example is the detached fishing-hook behavior used in certain wireless-style contraptions. When a player changes dimension, the hook can stay alive in its own area, remember who owns it, and wait until the right region is available again before finishing the interaction.
+                </p>
+                <p>
+                    In practice, that means the hook does not instantly break just because its owner or target is being handled elsewhere. The server keeps a thread-safe snapshot of the state it needs, avoids touching off-thread entities directly, and then schedules the final reel-in or cleanup on the correct region thread once that work is safe to realize.
+                </p>
+                <p>
+                    Another example is redirectable projectiles, such as when an arrow hits something that can be deflected. In a single-threaded server that redirection can read the owner's look direction directly. In a region-threaded server, that same idea still works by keeping a thread-safe copy of the needed rotation data, so the deflection can be computed correctly even if the owner is not on the same active region thread at that exact moment.
+                </p>
+
                 <div style="margin-top: 5rem; text-align: center;">
                     <a href="index.html" class="btn btn--outline">← Back to FAQ</a>
                 </div>
