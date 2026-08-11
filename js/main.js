@@ -10,6 +10,57 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isSafari) {
         document.body.classList.add("is-safari");
     }
+
+    // Click-to-copy server addresses
+    const copyAddressEls = document.querySelectorAll("[data-copy-address]");
+    const copyTimers = new WeakMap();
+
+    const fallbackCopy = (value) => {
+        const textarea = document.createElement("textarea");
+        textarea.value = value;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.select();
+        const copied = document.execCommand("copy");
+        textarea.remove();
+        if (!copied) throw new Error("Copy command was not available");
+    };
+
+    copyAddressEls.forEach((button) => {
+        const label = button.querySelector("[data-copy-label]");
+        if (!label) return;
+        const defaultLabel = label.textContent;
+
+        button.addEventListener("click", async () => {
+            const value = button.getAttribute("data-copy-address");
+            if (!value) return;
+
+            try {
+                if (navigator.clipboard && window.isSecureContext) {
+                    await navigator.clipboard.writeText(value);
+                } else {
+                    fallbackCopy(value);
+                }
+
+                const previousTimer = copyTimers.get(button);
+                if (previousTimer) window.clearTimeout(previousTimer);
+                label.textContent = "Copied";
+                button.classList.add("is-copied");
+                button.setAttribute("aria-live", "polite");
+
+                copyTimers.set(button, window.setTimeout(() => {
+                    label.textContent = defaultLabel;
+                    button.classList.remove("is-copied");
+                    button.removeAttribute("aria-live");
+                }, 2200));
+            } catch (error) {
+                label.textContent = "Select and copy";
+            }
+        });
+    });
+
     // Mobile navigation
     const navToggleEl = document.getElementById("nav-toggle");
     const navMenuEl = document.getElementById("nav-menu");
