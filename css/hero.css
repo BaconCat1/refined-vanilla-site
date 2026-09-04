@@ -30,7 +30,7 @@
     position: absolute;
     inset: 0;
 
-    background: url("../assets/img/hero.jpg") center / cover no-repeat;
+    background: url("../assets/img/gallery/cheesegod-2-1920.webp") center / cover no-repeat;
     animation: ken-burns 25s linear infinite;
 }
 
@@ -305,5 +305,11 @@ body.is-safari .video-title-video {
 
     .hero-actions .btn {
         padding: 0.72rem 1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-ken-burns {
+        background-image: url("../assets/img/gallery/cheesegod-2-1280.webp");
     }
 }
