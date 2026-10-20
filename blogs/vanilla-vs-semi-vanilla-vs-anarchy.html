@@ -279,7 +279,7 @@
                             <td style="text-align: center; padding: 0.75rem;">Official JAR</td>
                             <td style="text-align: center; padding: 0.75rem;">Paper/Spigot</td>
                             <td style="text-align: center; padding: 0.75rem;">Varies</td>
-                            <td style="text-align: center; padding: 0.75rem;">Custom Fabric</td>
+                            <td style="text-align: center; padding: 0.75rem;">Custom Canvas</td>
                         </tr>
                     </tbody>
                 </table>
@@ -328,27 +328,16 @@
                     duplication, Redstone timing, and mob spawning can all behave differently on Paper compared
                     to vanilla Minecraft.
                 </p>
-                <p>
-                    RefinedVanilla runs on <strong>custom Fabric-based server software</strong> that is specifically
-                    designed to preserve vanilla mechanics while adding performance improvements. Fabric is a
-                    lightweight modding framework that sits much closer to the vanilla codebase than Paper or
-                    Spigot. The custom modifications focus on two things:
-                </p>
+                <p>RefinedVanilla currently runs custom Canvas-based server software. We test important mechanics and fix reported regressions; identical vanilla behavior is not guaranteed for every design. EU and NA have separate worlds. See the <a href="../join/index.html">regional join guide</a> for current versions and addresses.</p>
                 <ul>
-                    <li><strong>Multithreading:</strong> Vanilla Minecraft runs on a single thread, which means the server can only use one CPU core. This is the primary bottleneck for server performance. RefinedVanilla's custom software distributes work across multiple CPU cores, dramatically reducing lag even when many players are online building complex farms and Redstone machines.</li>
-                    <li><strong>Vanilla parity:</strong> Every gameplay mechanic works exactly as it does in single-player Minecraft. Redstone timing is identical. Mob spawning follows vanilla rules. Game physics, block updates, and entity behavior are all authentic. This is why RefinedVanilla calls itself "the most vanilla server out there."</li>
+                    <li><strong>Multithreading:</strong> Vanilla Minecraft runs on a single thread, which means the server can only use one CPU core. This is the primary bottleneck for server performance. RefinedVanilla's custom software distributes work across multiple CPU cores, allowing independent regions to run concurrently; the benefit depends on the workload.</li>
+                    <li><strong>Vanilla parity:</strong> Preserving vanilla behavior is a goal. Important mechanics are tested, but differences and regressions can occur. Report reproducible problems so we can investigate.</li>
                 </ul>
-                <p>
-                    For technical players who build complex Redstone contraptions, automatic farms, or TNT-based
-                    machines, this distinction is crucial. A farm that works in single-player will work on
-                    RefinedVanilla. That is not a guarantee you can make on Paper or Spigot servers, where
-                    "optimizations" often break the very mechanics that make vanilla Minecraft's technical
-                    community so creative.
-                </p>
+                <p>Technical designs should be tested against the current regional runtime. Region boundaries, configuration and plugin behavior may differ from a single-player world.</p>
 
                 <h2>Cross-Platform Play: Java and Bedrock</h2>
                 <p>
-                    RefinedVanilla supports both Java Edition and Bedrock Edition on version 26.2. Players on
+                    RefinedVanilla supports both Java Edition and Bedrock Edition on the version shown in the regional join guide. Players on
                     Java, Windows Bedrock, Android, and iOS can connect directly and play together.
                     Cross-platform support is increasingly important as the Minecraft community spans multiple
                     devices, and RefinedVanilla's implementation ensures that Bedrock players get the same
@@ -369,7 +358,7 @@
                     <li><strong>Choose pure vanilla</strong> if you want the most authentic experience with no modifications at all. Be aware that performance may suffer with larger player counts.</li>
                     <li><strong>Choose semi-vanilla</strong> if you want convenience features like teleportation, land claims, and an economy system. These servers are great for casual play and building without fear of griefing.</li>
                     <li><strong>Choose anarchy</strong> if you want complete freedom, high-stakes survival, and player-driven conflict. Be prepared for hacked clients on most traditional anarchy servers.</li>
-                    <li><strong>Choose RefinedVanilla</strong> if you want the best of both worlds: anarchy freedom with vanilla authenticity and fair play enforced through anti-cheat. No hacks, no plugins, no artificial advantages, just Minecraft as it was meant to be played, with the added thrill of real human opponents.</li>
+                    <li><strong>Choose RefinedVanilla</strong> if you want the best of both worlds: anarchy freedom with vanilla authenticity and fair play enforced through anti-cheat. No hacked clients or artificial gameplay advantages, just Minecraft as it was meant to be played, with the added thrill of real human opponents.</li>
                 </ul>
 
                 <h2>Get Started Today</h2>
@@ -377,7 +366,7 @@
                     Now that you understand the differences between vanilla, semi-vanilla, and anarchy servers,
                     the choice is yours. If you value skill-based gameplay, authentic vanilla mechanics, and the
                     freedom to play however you want without worrying about hacked clients,
-                    <a href="../join/index.html">join RefinedVanilla</a> on version 26.2. Java uses
+                    <a href="../join/index.html">join RefinedVanilla</a> on the version shown in the regional join guide. Java uses
                     <strong>refinedvanilla.net</strong>; Bedrock uses <strong>bedrock.refinedvanilla.net:19132</strong>.
                     Join the
                     <a href="https://discord.gg/T6Uv55ke8v">Discord community</a>, and experience the most

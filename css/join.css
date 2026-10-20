@@ -34,7 +34,7 @@
 
 @media (min-width: 900px) {
   .join-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   }
 }
 
@@ -189,4 +189,28 @@
     left: 1rem;
     transform: none;
   }
+}
+
+/* Keep the address and copy feedback on separate rows in regional cards. */
+.join-address--button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+.join-address--button .join-value {
+  display: block;
+  width: 100%;
+  overflow-wrap: anywhere;
+}
+.join-address--button .join-copy-action {
+  position: static;
+  align-self: flex-start;
+  transform: none;
+}
+
+.join-address--button { padding-right: 1rem; }
+@media (min-width: 900px) {
+  .join-grid:has(> :nth-child(3)) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .join-grid:has(> :nth-child(3)) > :last-child { grid-column: 1 / -1; }
 }
