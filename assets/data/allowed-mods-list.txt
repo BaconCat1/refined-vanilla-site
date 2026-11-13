@@ -240,7 +240,9 @@ My Totem Doll
 
 N:
 NarrusYeetus
+NBT Autocomplete | https://modrinth.com/mod/nbt-autocomplete
 Nether Coords
+No Chat Reports | https://modrinth.com/mod/no-chat-reports
 No Fade
 No More Useless Keys - NMUK
 No Screen Bobbing
@@ -252,6 +254,7 @@ Not Enough Crashes
 NoTextureRotations
 NotifMod
 Noxesium
+Nuit | https://modrinth.com/mod/nuit
 Nvidium
 
 O:
@@ -301,6 +304,7 @@ Screenshot to Clipboard
 Screenshot Viewer
 Seamless
 Searchables
+SeedMapper | https://modrinth.com/mod/seedmapper
 Server Pinger Fixer
 Shulker Box Tooltip
 Shulker Tooltip
@@ -312,6 +316,7 @@ Simple Voice Chat
 Simple World Downloader
 SimpleAutoClicker (2s cooldown)
 Skin Shuffle
+Skyboxify | https://modrinth.com/mod/skyboxify
 Smooth Boot (Fabric)
 Smooth Scrolling
 Smooth Scrolling Refurbished
@@ -331,6 +336,7 @@ Subtle Effects
 
 T:
 TCDCommons API
+Thorough Keybindings | https://modrinth.com/mod/thorough-keybindings
 Time Changer
 Toggle Sprint Display
 Toggleable PieChart
@@ -351,6 +357,8 @@ ViewLockerMod
 Viewmodel Changer
 Visuality
 voxy
+Voxy Extra | https://modrinth.com/mod/voxy-extra
+Voxy WorldGen (Voxygen) | https://modrinth.com/mod/voxy-worldgen
 VulkanMod
 
 W:
